@@ -6,9 +6,11 @@
   "author": "Nicholas Rempel",
   "main": "server.js",
   "dependencies": {
-    "restify": "*",
+    "express": "*",
     "mongoose": "*",
-    "node-uuid": "*"
+    "node-uuid": "*",
+    "jade": "*",
+    "stylus": "*"
   },
   "engines": {
     "node": "0.10.x"

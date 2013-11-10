@@ -1,6 +1,6 @@
-var Event = require('../models/event.js');
+var Event = require('../../models/event.js');
 
-exports.list = function (req, res, next) {
+exports.list = function (req, res) {
 	var count = Number(req.query.count) || 100;
 	var offset = Number(req.query.offset) || 0;
 	var sortBy = String(req.query.sortBy) || 'created';
@@ -24,15 +24,13 @@ exports.list = function (req, res, next) {
 	query.exec(function (err, docs) {
 		if (err) { console.log(err); }
 		res.send(docs);
-		return next()
 	});
 }
 
-exports.details = function (req, res, next) {
+exports.details = function (req, res) {
 	var id = req.params.linkId;
 	Link.findById(id, function (err, doc) {
 		if (err) { console.log(err); }
 		res.send(doc);
-		return next()
 	});
 }

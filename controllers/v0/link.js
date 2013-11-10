@@ -1,57 +1,54 @@
 var uuid = require('node-uuid');
 
-var Link = require('../models/link.js');
+var Link = require('../../models/link.js');
 
 // List links
-exports.list = function (req, res, next) {
-	var count = Number(req.query.count) || 100;
+exports.list = function (req, res) {
+	var limit = Number(req.query.limit);
 	var offset = Number(req.query.offset) || 0;
-	var sortBy = String(req.query.sortBy) || 'created';
+	var sortBy = req.query.sortBy || 'created';
 	var sortOrder = Number(req.query.sortOrder) || -1;
 
-	var sort = {
-		sortBy: sortOrder
-	};
+	// Restrict limit range
+	limit = Math.min(limit, 100);
+	limit = Math.max(limit, 0);
 
+	// Format and validate sort
+	var sort = {};
+	sort[sortBy] = sortOrder;
 	// Only accept -1, 1
 	if (!(sort[sortBy] in [-1, 1])) {
 		sort[sortBy] = -1;
 	}
 
-	var find = {
-		count: count,
-		offset: offset
-	};
-
-	query = Link.find(find).sort(sort).skip(offset);
+	query = Link.find().sort(sort).skip(offset).limit(limit);
 	query.exec(function (err, docs) {
 		if (err) { console.log(err); }
 		res.send(docs);
-		return next()
 	});
 };
 
 // Get link by id
-exports.details = function (req, res, next) {
+exports.details = function (req, res) {
 	var id = req.params.linkId;
-	console.log(id);
 	Link.findById(id, function (err, doc) {
 		if (err) { console.log(err); }
 		res.send(doc);
-		return next()
 	});
 };
 
-exports.create = function (req, res, next) {
+exports.create = function (req, res) {
+	var hash = uuid.v1();
+
     var link = new Link({
         unwrapped: req.body.unwrapped,
-        wrapped: 'wrapulous.com/' + uuid.v1()
+        wrapped: 'wrapulous.com/' + hash,
+        hash: hash
     })
 
     link.save(function (err, link) {
     	if (err) { console.log(err) };
 	    res.send(link);
-		return next();
     });
 };
 
