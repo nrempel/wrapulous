@@ -11,7 +11,7 @@ var linkSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-    raw: String,
+    unwrapped: String,
     wrapped:  String
 });
  

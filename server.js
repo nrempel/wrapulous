@@ -5,6 +5,8 @@ var linksController = require('./controllers/links.js');
 var eventsController = require('./controllers/events.js');
 
 var server = restify.createServer();
+server.use(restify.queryParser());
+server.use(restify.bodyParser({ mapParams: false }));
 
 // Config
 var config = {
@@ -18,12 +20,13 @@ var config = {
 mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/wrapulous');
 
 // Routes
-server.get('/links', linksController.list);
-server.get('/links/:linkId', linksController.details);
-server.get('/link/:linkId/events', eventsController.list);
-server.get('/link/:linkId/events/:eventId', eventsController.details);
+server.get('/api/v0/links', linksController.list);
+server.get('/api/v0/links/:linkId', linksController.details);
+server.get('/api/v0/link/:linkId/events', eventsController.list);
+server.get('/api/v0/link/:linkId/events/:eventId', eventsController.details);
+
+server.post('/api/v0/links', linksController.create);
 
 server.listen(5000, function () {
-	console.log(server);
 	console.log('%s listening at %s', config.name, server.url);
 });
