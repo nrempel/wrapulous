@@ -6,11 +6,11 @@ var Link = require('../models/link.js');
 exports.handle = function (req, res) {
 	var hash = req.originalUrl.slice(1, req.originalUrl.length);
 	Link.findOne({ hash: hash }, function (err, doc) {
-		if (err) {
+		if (err || doc === null) {
 			res.redirect('/');
 		}
 		else {
-			console.log(doc);
+			//TODO tracking stuff
 			res.redirect(302, doc.unwrapped);
 		}
 	});

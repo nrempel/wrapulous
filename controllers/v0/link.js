@@ -39,9 +39,10 @@ exports.details = function (req, res) {
 
 exports.create = function (req, res) {
 	var hash = uuid.v1();
+	var unwrapped = req.body.unwrapped;
 
     var link = new Link({
-        unwrapped: req.body.unwrapped,
+        unwrapped: unwrapped,
         wrapped: 'wrapulous.com/' + hash,
         hash: hash
     })
