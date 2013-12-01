@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/wrapulous')
 // Setup
 server.set('port', process.env.PORT || 5000);
 server.set('views', config.rootDir + config.viewPath);
-server.set('view engine', 'jade');
+web.set('view engine', 'jade');
 server.use(express.compress());
 server.use(express.favicon(config.rootDir + config.publicPath + '/favicon.ico'));
 server.use(express.logger('dev'));
@@ -34,12 +34,7 @@ if ('development' == server.get('env')) {
     server.use(express.errorHandler());
 }
 
-// Controllers
-var linkController = require('./controllers/v0/link.js');
-var eventController = require('./controllers/v0/event.js');
-var trackController = require('./controllers/track.js');
-
-// App routes
+// Web routes
 web.get('/', function (req, res) {
     res.render('index');
 });
@@ -47,6 +42,11 @@ web.get('/', function (req, res) {
 web.get('/docs', function (req, res) {
     res.render('docs');
 });
+
+// Controllers
+var linkController = require('./controllers/v0/link.js');
+var eventController = require('./controllers/v0/event.js');
+var trackController = require('./controllers/track.js');
 
 // API routes
 api.get('/api/v0/links', linkController.list);
