@@ -1,10 +1,15 @@
 var mongoose = require('mongoose');
 var express = require('express');
 
-var server = module.exports = express();
+var server = module.exports = express(); 
+var web = module.exports = express();
+var api = module.exports = express();
+var track = module.exports = express();
+var redirect = module.exports = express();
 
 // Config
 var config = {
+    domain: 'wrapulous.com',
     name: 'wrapulous',
     publicPath: '/public',
     viewPath: '/views',
@@ -30,14 +35,6 @@ if ('development' == server.get('env')) {
     server.use(express.errorHandler());
 }
 
-// Redirect www to bare domain
-server.use(function(req, res, next) {
-    if (req.headers.host.match(/^www/) !== null ) {
-        res.redirect(301, 'http://'+req.headers.host.replace(/^www\./, '')+req.url);
-}
-    else { next(); }
-});
-
 // Controllers
 var appController = require('./controllers/app.js');
 var linkController = require('./controllers/v0/link.js');
@@ -45,18 +42,29 @@ var eventController = require('./controllers/v0/event.js');
 var trackController = require('./controllers/track.js');
 
 // App routes
-server.get('/', appController.index);
-server.get('/docs', appController.docs);
+web.get('/', appController.index);
+web.get('/docs', appController.docs);
 
 // API routes
-server.get('/api/v0/links', linkController.list);
-server.get('/api/v0/links/:linkId', linkController.details);
-server.post('/api/v0/links', linkController.create);
-server.get('/api/v0/link/:linkId/events', eventController.list);
-server.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
+api.get('/api/v0/links', linkController.list);
+api.get('/api/v0/links/:linkId', linkController.details);
+api.post('/api/v0/links', linkController.create);
+api.get('/api/v0/link/:linkId/events', eventController.list);
+api.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
 
 // Track routes
-server.get('*', trackController.handle);
+track.get('*', trackController.handle);
+
+// Unkown subdomain redirect
+redirect.all('*', function(req, res){
+  res.redirect(config.domain + server.get('port') + req.subdomains[0]);
+});
+
+// Subdomain -> express app map
+server.use(express.vhost('*.' + config.domain, track));
+server.use(express.vhost('api.' + config.domain, api));
+server.use(express.vhost('track.' + config.domain, redirect));
+server.use(express.vhost(config.domain, web)); 
 
 // Run
 server.listen(server.get('port'));
