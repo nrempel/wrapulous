@@ -4,8 +4,9 @@ var Link = require('../models/link.js');
 
 // Get link by id
 exports.handle = function (req, res) {
-	var hash = req.originalUrl.slice(1, req.originalUrl.length);
-	Link.findOne({ hash: hash }, function (err, doc) {
+	var tag = req.originalUrl.slice(1, req.originalUrl.length);
+	console.log(tag);
+	Link.findOne({ tag: tag }, function (err, doc) {
 		if (err || doc === null) {
 			res.redirect('/');
 		}
