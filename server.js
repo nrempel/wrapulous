@@ -36,14 +36,18 @@ if ('development' == server.get('env')) {
 }
 
 // Controllers
-var appController = require('./controllers/app.js');
 var linkController = require('./controllers/v0/link.js');
 var eventController = require('./controllers/v0/event.js');
 var trackController = require('./controllers/track.js');
 
 // App routes
-web.get('/', appController.index);
-web.get('/docs', appController.docs);
+web.get('/', function (req, res) {
+    res.render('index');
+});
+
+web.get('/docs', function (req, res) {
+    res.render('docs');
+});
 
 // API routes
 api.get('/api/v0/links', linkController.list);
