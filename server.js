@@ -9,7 +9,7 @@ var redirect = module.exports = express();
 
 // Config
 var config = {
-    domain: 'wrapulous.com',
+    domain: 'http://wrapulous.com',
     name: 'wrapulous',
     publicPath: '/public',
     viewPath: '/views',
@@ -61,7 +61,7 @@ track.get('*', trackController.handle);
 
 // Unkown subdomain redirect
 redirect.all('*', function(req, res){
-  res.redirect(config.domain + server.get('port') + req.subdomains[0]);
+  res.redirect(config.domain + ':' + server.get('port') + req.subdomains[0]);
 });
 
 // Subdomain -> express app map
