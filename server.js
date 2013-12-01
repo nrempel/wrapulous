@@ -8,7 +8,7 @@ var track = module.exports = express();
 
 // Config
 var config = {
-    domain: 'http://wrapulous.com',
+    domain: 'wrapulous.com',
     name: 'wrapulous',
     publicPath: '/public',
     viewPath: '/views',
