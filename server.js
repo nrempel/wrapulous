@@ -61,9 +61,9 @@ redirect.all('*', function(req, res){
 });
 
 // Subdomain -> express app map
-server.use(express.vhost('*.' + config.domain, track));
+server.use(express.vhost('track.' + config.domain, track));
 server.use(express.vhost('api.' + config.domain, api));
-server.use(express.vhost('track.' + config.domain, redirect));
+server.use(express.vhost('*.' + config.domain, redirect));
 server.use(express.vhost(config.domain, web)); 
 
 // Run
