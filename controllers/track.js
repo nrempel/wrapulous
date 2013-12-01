@@ -11,7 +11,7 @@ exports.handle = function (req, res) {
 		}
 		else {
 			//TODO tracking stuff
-			res.redirect(302, doc.unwrapped);
+			res.redirect(302, doc.destination);
 		}
 	});
 };

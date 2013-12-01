@@ -11,9 +11,9 @@ var linkSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-    unwrapped: String,
-    wrapped:  String,
-    hash: String
+    destination: String,
+    domain:  String,
+    tag: String
 });
  
 module.exports = mongoose.model('Link', linkSchema);

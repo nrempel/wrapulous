@@ -1,5 +1,4 @@
-var uuid = require('node-uuid');
-
+var helpers = require('../helpers.js');
 var Link = require('../../models/link.js');
 
 // List links
@@ -38,13 +37,14 @@ exports.details = function (req, res) {
 };
 
 exports.create = function (req, res) {
-	var hash = uuid.v1();
-	var unwrapped = req.body.unwrapped;
+
+	var tag = helpers.generateBase62(5);
+	var destination = req.body.destination;
 
     var link = new Link({
-        unwrapped: unwrapped,
-        wrapped: 'wrapulous.com/' + hash,
-        hash: hash
+        destination: destination,
+        domain: 'wrapulous.com/', // Eventually we use cool mini domains
+        tag: tag
     })
 
     link.save(function (err, link) {

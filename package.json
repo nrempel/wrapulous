@@ -10,7 +10,9 @@
     "mongoose": "*",
     "node-uuid": "*",
     "jade": "*",
-    "stylus": "*"
+    "stylus": "*",
+    "bases": "*",
+    "crypto": "*"
   },
   "engines": {
     "node": "0.10.x"
