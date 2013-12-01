@@ -43,7 +43,7 @@ exports.create = function (req, res) {
 
     var link = new Link({
         destination: destination,
-        domain: 'wrapulous.com/', // Eventually we use cool mini domains
+        domain: 'wrapulous.com', // Eventually we use cool mini domains
         tag: tag
     })
 

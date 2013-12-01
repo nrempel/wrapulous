@@ -20,15 +20,15 @@ mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/wrapulous')
 
 // Setup
 server.set('port', process.env.PORT || 5000);
-server.set('views', config.rootDir + config.viewPath);
+web.set('views', config.rootDir + config.viewPath);
 web.set('view engine', 'jade');
-server.use(express.compress());
-server.use(express.favicon(config.rootDir + config.publicPath + '/favicon.ico'));
+web.use(express.compress());
+web.use(express.favicon(config.rootDir + config.publicPath + '/favicon.ico'));
 server.use(express.logger('dev'));
 server.use(express.bodyParser());
 server.use(express.methodOverride());
-server.use(require('stylus').middleware(config.rootDir + config.publicPath));
-server.use(express['static'](config.rootDir + config.publicPath));
+web.use(require('stylus').middleware(config.rootDir + config.publicPath));
+web.use(express['static'](config.rootDir + config.publicPath));
 
 if ('development' == server.get('env')) {
     server.use(express.errorHandler());
