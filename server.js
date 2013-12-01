@@ -67,3 +67,4 @@ server.use(express.vhost(config.domain, web));
 server.listen(server.get('port'));
 console.log('Started ' + config.name + ' on port ' + server.get('port'));
 console.log('Config used: ', config);
+
