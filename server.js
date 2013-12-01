@@ -59,7 +59,13 @@ api.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
 // Track routes
 track.get('*', trackController.handle);
 
+// Unkown subdomain redirect
+redirect.all('*', function(req, res){
+  res.redirect(config.domain + ':' + server.get('port') + req.subdomains[0]);
+});
+
 // Subdomain -> express app map
+server.use(express.vhost('*.' + config.domain, redirect));
 server.use(express.vhost('track.' + config.domain, track));
 server.use(express.vhost('api.' + config.domain, api));
 server.use(express.vhost(config.domain, web)); 
