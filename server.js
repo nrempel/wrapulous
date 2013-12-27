@@ -28,7 +28,7 @@ server.use(express.logger('dev'));
 server.use(express.bodyParser());
 server.use(express.methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
-web.use(express['static'](config.rootDir + config.publicPath));
+web.use(express.static(config.rootDir + config.publicPath));
 
 if ('development' == server.get('env')) {
     server.use(express.errorHandler());

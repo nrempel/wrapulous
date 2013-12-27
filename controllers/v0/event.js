@@ -25,7 +25,7 @@ exports.list = function (req, res) {
 		if (err) { console.log(err); }
 		res.send(docs);
 	});
-}
+};
 
 exports.details = function (req, res) {
 	var id = req.params.linkId;
@@ -33,4 +33,4 @@ exports.details = function (req, res) {
 		if (err) { console.log(err); }
 		res.send(doc);
 	});
-}
+};

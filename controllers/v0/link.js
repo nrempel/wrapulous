@@ -45,11 +45,11 @@ exports.create = function (req, res) {
         destination: destination,
         domain: 'wrapulous.com', // Eventually we use cool mini domains
         tag: tag
-    })
+    });
 
     link.save(function (err, link) {
-    	if (err) { console.log(err) };
-	    res.send(link);
+        if (err) { console.log(err); }
+        res.send(link);
     });
 };
 
