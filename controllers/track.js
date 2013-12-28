@@ -12,11 +12,12 @@ exports.handle = function (req, res) {
 		}
 		else {
 			//TODO tracking stuff
-
-			console.log(doc);
-
-
-			res.redirect(302, doc.destination);
+			destination = doc.destination;
+			// Make sure we have an absolute uri... default to http
+			if (doc.destination.match(/^http:\/\//) === null) {
+				destination = 'http://' + destination;
+			}
+			res.redirect(302, destination);
 		}
 	});
 };

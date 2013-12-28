@@ -5,7 +5,6 @@ exports.defaultContentType = function (req, res, next) {
         res.send(
             400,
             'content type "application/json" expected but found "'+ req.headers['content-type'] + '" instead');
-    } else {
-        next();
     }
+    else { next(); }
 };
