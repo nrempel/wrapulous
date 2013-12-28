@@ -12,8 +12,6 @@ exports.list = function (req, res) {
 	limit = Math.min(limit, 100);
 	limit = Math.max(limit, 0);
 
-    console.log(limit);
-
 	// Format and validate sort
 	var sort = {};
 	sort[sortBy] = sortOrder;
