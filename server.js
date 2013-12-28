@@ -29,6 +29,7 @@ server.use(express.bodyParser());
 server.use(express.methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
+api.use(require('./middleware.js').defaultContentType); // Forces application/json
 
 if ('development' == server.get('env')) {
     server.use(express.errorHandler());
@@ -59,9 +60,15 @@ api.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
 track.get('*', trackController.handle);
 
 // Subdomain -> express app map
-server.use(express.vhost('track.' + config.domain, track));
-server.use(express.vhost('api.' + config.domain, api));
-server.use(express.vhost(config.domain, web)); 
+if ('development' == server.get('env')) {
+    server.use(express.vhost('localhost', api));
+    server.use(express.vhost('localhost', web));
+    server.use(express.vhost('localhost', track));
+} else {
+    server.use(express.vhost('track.' + config.domain, track));
+    server.use(express.vhost('api.' + config.domain, api));
+    server.use(express.vhost(config.domain, web));    
+}
 
 // Run
 server.listen(server.get('port'));

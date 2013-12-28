@@ -30,6 +30,7 @@ exports.list = function (req, res) {
 // Get link by id
 exports.details = function (req, res) {
 	var id = req.params.linkId;
+
 	Link.findById(id, function (err, doc) {
 		if (err) { console.log(err); }
 		res.send(doc);
@@ -40,6 +41,8 @@ exports.create = function (req, res) {
 
 	var tag = helpers.generateBase62(5);
 	var destination = req.body.destination;
+
+    console.log(req.body);
 
     var link = new Link({
         destination: destination,
