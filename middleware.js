@@ -1,3 +1,4 @@
+// Only allows Content-Type application/json
 exports.defaultContentType = function (req, res, next) {
     req.headers['content-type'] = req.headers['content-type'] || 'application/json';
     if (req.headers['content-type'] !== 'application/json') {
