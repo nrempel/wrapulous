@@ -21,9 +21,9 @@ exports.list = function (req, res) {
 	}
 
 	query = Link.find().sort(sort).skip(offset).limit(limit);
-	query.exec(function (err, docs) {
+	query.exec(function (err, links) {
 		if (err) { console.log(err); }
-		res.send(docs);
+		res.send(links);
 	});
 };
 
@@ -31,9 +31,9 @@ exports.list = function (req, res) {
 exports.details = function (req, res) {
 	var id = req.params.linkId;
 
-	Link.findById(id, function (err, doc) {
+	Link.findById(id, function (err, link) {
 		if (err) { console.log(err); }
-		res.send(doc);
+		res.send(link);
 	});
 };
 
@@ -42,11 +42,9 @@ exports.create = function (req, res) {
 	var tag = helpers.generateBase62(5);
 	var destination = req.body.destination;
 
-    console.log(req.body);
-
     var link = new Link({
         destination: destination,
-        domain: 'wrapulous.com', // Eventually we use cool mini domains
+        url: 'wrapulous.com', // Eventually we use cool mini domains
         tag: tag
     });
 

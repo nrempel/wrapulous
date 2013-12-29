@@ -11,7 +11,9 @@ var eventSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-    type: String
+    type: String,
+    userAgent: String,
+    remoteAddress: String
 });
  
 module.exports = mongoose.model('Event', eventSchema);

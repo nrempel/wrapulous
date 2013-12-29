@@ -21,16 +21,16 @@ exports.list = function (req, res) {
 	};
 
 	query = Event.find(find).sort(sort).skip(offset);
-	query.exec(function (err, docs) {
+	query.exec(function (err, events) {
 		if (err) { console.log(err); }
-		res.send(docs);
+		res.send(events);
 	});
 };
 
 exports.details = function (req, res) {
 	var id = req.params.linkId;
-	Link.findById(id, function (err, doc) {
+	Link.findById(id, function (err, event) {
 		if (err) { console.log(err); }
-		res.send(doc);
+		res.send(event);
 	});
 };
