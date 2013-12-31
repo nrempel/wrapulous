@@ -15,5 +15,13 @@ var eventSchema = new Schema({
     userAgent: String,
     remoteAddress: String
 });
- 
+
+eventSchema.methods.toJSON = function() {
+  obj = this.toObject();
+  delete obj._id;
+  delete obj.__v;
+  return obj;
+};
+
+
 module.exports = mongoose.model('Event', eventSchema);

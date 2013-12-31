@@ -18,4 +18,12 @@ var linkSchema = new Schema({
     tag: String
 });
 
+
+linkSchema.methods.toJSON = function() {
+  obj = this.toObject();
+  delete obj._id;
+  delete obj.__v;
+  return obj;
+};
+
 module.exports = mongoose.model('Link', linkSchema);

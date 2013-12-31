@@ -39,7 +39,7 @@ exports.details = function (req, res) {
 
 exports.create = function (req, res) {
 
-	var tag = helpers.generateBase62(5);
+	var tag = helpers.generateBase62(6);
 	var destination = req.body.destination;
 
     var link = new Link({
