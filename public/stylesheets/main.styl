@@ -1,0 +1,172 @@
+/** BASE STYLES **/
+body
+  font-family: 'Computer Modern Typewriter Light', sans-serif
+  background-color: #fff
+  color: #333
+  font-size: 20px
+body,html
+  height: 100%
+h1,h2,h3,h4,h5,h6
+  color: #555
+  font-weight: normal
+  margin: 0
+
+/** BASE MEDIA QUERIES **/
+@media handheld, only screen and (max-width: 767px)
+  body
+    font-size: 18px
+
+
+/** HEADER **/
+header
+  padding-bottom: 50px
+
+/** FOOTER **/
+footer
+  padding-top: 50px
+
+/** BASE STYLES **/
+h1
+  font-size: 2.9em
+h2
+  font-size: 1.9em
+h3
+  font-size: 1.4em
+  color: #888
+h1 a
+  text-decoration: none
+  color: #555
+article h2
+  text-transform: uppercase
+  font-size: 1.0em
+  padding-bottom: 0.25em
+  border-bottom: 1px solid #666
+p
+  margin: 1.25em 0
+p, li
+  line-height: 1.4em
+hr
+  height: 0
+  border: 0
+  margin: 1em 0
+  border-bottom: 1px dashed #aaa
+code
+  font-size: 0.7em
+
+
+
+/** INPUTS **/
+input[type="text"],
+input[type="password"],
+textarea
+  width: 100%
+  margin: 1.0em 0 0.2em 0
+  background-color: #eee
+  border: 1px solid #ddd
+  font-size: 0.8em
+  outline: none
+  color: #444
+  padding: 0.5em
+  overflow: hidden
+input[type="text"]:active, textarea:active,
+input[type="password"]:active, textarea:active,
+input[type="text"]:focus, textarea:focus
+input[type="password"]:focus, textarea:focus
+  border: 1px solid #aaa
+  outline: none
+input[type="text"].error, textarea.error
+  border: 1px solid #DF3030
+
+button
+  background-color: #58A346
+  color: #fff
+  text-shadow: 0 0 4px rgba(0,0,0,0.2)
+  font-size: 1.0em
+  border: 0
+  padding: 0.5em 1em
+  cursor: pointer
+button.secondary
+  background-color: #BC812D
+button:hover
+  opacity: 0.9
+button:active
+  opacity: 0.8
+
+
+/** LINKS **/
+a
+  color: #3B71A2
+a:hover
+  color: #2E567B
+a:active
+  color: #244360
+header a
+  text-decoration: none
+  display: block
+header a:hover
+  opacity: 0.8
+header a:active
+  opacity: 0.7
+a:hover > img
+  opacity: 0.9
+a:active > img
+  opacity: 0.8
+
+
+/** HELPERS **/
+.inline-block
+  display: inline-block
+.vert-align
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  width: 50%
+  height: 30%
+  margin: auto
+.inline
+  display: inline
+.marg-tb
+  margin-top: 0.5em
+  margin-bottom: 0.5em
+.marg-tb-2
+  margin-top: 1.5em
+  margin-bottom: 1.5em
+.text-center
+  text-align: center
+.pull-right
+  float: right
+.no-under
+  text-decoration: none
+.italic
+  font-style: italic
+.dark
+  color: #222
+.uppercase
+  text-transform: uppercase
+.fit
+  width: 100%
+small, .small
+  font-size: 0.8em
+.reverse
+  display: inline-block
+  -moz-transform: scaleX(-1); /* Gecko */
+  -o-transform: scaleX(-1); /* Operah */
+  -webkit-transform: scaleX(-1); /* webkit */
+  transform: scaleX(-1); /* standard */
+  filter: FlipH; /* IE 6/7/8 */
+
+/** HACKS **/
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder
+  color: #bbb
+
+/** FINAL MEDIA QUERIES **/
+@media handheld, only screen and (max-width: 767px)
+  header
+    margin-bottom: 0
+  header h1
+    font-size: 1.8em
+  header p
+    font-size: 0.8em
