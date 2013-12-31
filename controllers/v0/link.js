@@ -31,7 +31,7 @@ exports.list = function (req, res) {
 exports.details = function (req, res) {
 	var id = req.params.linkId;
 
-	Link.findById(id, function (err, link) {
+	Link.findOne({tag: id}, function (err, link) {
 		if (err) { console.log(err); }
 		res.send(link);
 	});
@@ -44,7 +44,7 @@ exports.create = function (req, res) {
 
     var link = new Link({
         destination: destination,
-        url: 'wrapulous.com', // Eventually we use cool mini domains
+        url: 'wrpls.com',
         tag: tag
     });
 
