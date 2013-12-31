@@ -6,14 +6,21 @@ html
         link(rel='stylesheet', href='/stylesheets/simplegrid.css')
         link(rel='stylesheet', href='/stylesheets/main.css')
         link(rel='stylesheet', href='/fonts/cmun-typewriter-light.css')
-        script(src='/javascripts/jquery.js')
+        //- script(src='/javascripts/jquery.js')
 
     body
         header
-            block header
+            div.grid.grid-pad.text-center
+                h1.inline wrapulous
+                | &nbsp;
+                small.dark the simple link wrapping api
 
         div
             block content
 
         footer
-            block footer
+            div.grid.grid-pad.text-center
+                small
+                    p.inline © #{year},
+                    | &nbsp;
+                    a.no-under(href='http://r.empel.co') Nicholas Rempel

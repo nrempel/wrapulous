@@ -37,7 +37,9 @@ if ('development' == server.get('env')) {
 
 // Web routes
 web.get('/', function (req, res) {
-    res.render('index');
+    var date = new Date();
+    var year = date.getFullYear();
+    res.render('index', {year: year});
 });
 
 web.get('/docs', function (req, res) {
