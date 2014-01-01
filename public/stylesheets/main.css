@@ -1,7 +1,7 @@
 /** BASE STYLES **/
 body {
   font-family: 'Computer Modern Typewriter Light', sans-serif;
-  background-color: #fff;
+  background-color: #eee;
   color: #333;
   font-size: 20px;
 }
@@ -20,11 +20,6 @@ h6 {
   margin: 0;
 }
 /** BASE MEDIA QUERIES **/
-@media handheld, only screen and (max-width: 767px) {
-  body {
-    font-size: 18px;
-  }
-}
 /** HEADER **/
 header {
   padding-bottom: 50px;
@@ -35,13 +30,13 @@ footer {
 }
 /** BASE STYLES **/
 h1 {
-  font-size: 2.9em;
+  font-size: 3em;
 }
 h2 {
-  font-size: 1.9em;
+  font-size: 1.8em;
 }
 h3 {
-  font-size: 1.4em;
+  font-size: 1.3em;
   color: #888;
 }
 h1 a {
@@ -212,14 +207,3 @@ textarea::-webkit-input-placeholder {
   color: #bbb;
 }
 /** FINAL MEDIA QUERIES **/
-@media handheld, only screen and (max-width: 767px) {
-  header {
-    margin-bottom: 0;
-  }
-  header h1 {
-    font-size: 1.8em;
-  }
-  header p {
-    font-size: 0.8em;
-  }
-}
