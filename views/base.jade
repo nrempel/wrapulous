@@ -4,11 +4,17 @@ html
         title wrapulous
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet', href='/stylesheets/simplegrid.css')
+        link(rel='stylesheet', href='/stylesheets/ribbon.css')
         link(rel='stylesheet', href='/stylesheets/main.css')
-        link(rel='stylesheet', href='/fonts/cmun-typewriter-light.css')
-        //- script(src='/javascripts/jquery.js')
+        link(href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css')
+        script(src='/javascripts/jquery.js')
 
     body
+
+        div.ribbon-wrapper
+            div.ribbon
+                a(href='http://wrapulous.com') Request an API key
+
         header
             div.grid.grid-pad.text-center
                 h1 wrapulous

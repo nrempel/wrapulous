@@ -1,6 +1,6 @@
 /** BASE STYLES **/
 body {
-  font-family: 'Computer Modern Typewriter Light', sans-serif;
+  font-family: 'Roboto Slab', serif;
   background-color: #eee;
   color: #333;
   font-size: 20px;
@@ -19,7 +19,6 @@ h6 {
   font-weight: normal;
   margin: 0;
 }
-/** BASE MEDIA QUERIES **/
 /** HEADER **/
 header {
   padding-bottom: 50px;
@@ -184,4 +183,3 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #bbb;
 }
-/** FINAL MEDIA QUERIES **/
