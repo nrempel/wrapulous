@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 
-var server = module.exports = express(); 
+var server = module.exports = express();
 var web = module.exports = express();
 var api = module.exports = express();
 var track = module.exports = express();
@@ -16,7 +16,7 @@ var config = {
 };
 
 // Mongoose
-mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost:27017/wrapulous');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wrapulous');
 
 // Setup
 server.set('port', process.env.PORT || 5000);
@@ -69,11 +69,10 @@ if ('development' == server.get('env')) {
 } else {
     server.use(express.vhost('track.' + config.domain, track));
     server.use(express.vhost('api.' + config.domain, api));
-    server.use(express.vhost(config.domain, web));    
+    server.use(express.vhost(config.domain, web));
 }
 
 // Run
 server.listen(server.get('port'));
 console.log('Started ' + config.name + ' on port ' + server.get('port'));
 console.log('Config used: ', config);
-
