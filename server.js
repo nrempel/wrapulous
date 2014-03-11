@@ -19,7 +19,7 @@ var config = {
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wrapulous');
 
 // Setup
-server.set('port', process.env.PORT || 5000);
+server.set('port', process.env.PORT || 6000);
 web.set('views', config.rootDir + config.viewPath);
 web.set('view engine', 'jade');
 web.use(express.compress());
@@ -33,6 +33,8 @@ api.use(require('./middleware.js').defaultContentType); // Forces application/js
 
 if ('development' == server.get('env')) {
     server.use(express.errorHandler());
+} else {
+    require('newrelic');
 }
 
 // Web routes

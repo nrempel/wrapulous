@@ -11,7 +11,8 @@
     "node-uuid": "*",
     "jade": "*",
     "stylus": "*",
-    "bases": "*"
+    "bases": "*",
+    "newrelic": "*"
   },
   "engines": {
     "node": "0.10.x"
