@@ -15,6 +15,8 @@ var config = {
     rootDir: __dirname,
 };
 
+console.log( server.get('env') || 'not');
+
 // Mongoose
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wrapulous');
 
