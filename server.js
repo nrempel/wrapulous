@@ -15,8 +15,6 @@ var config = {
     rootDir: __dirname,
 };
 
-console.log( server.get('env') || 'not');
-
 // Mongoose
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wrapulous');
 
@@ -33,11 +31,12 @@ web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
 api.use(require('./middleware.js').defaultContentType); // Forces application/json
 
-if ('development' == server.get('env')) {
-    server.use(express.errorHandler());
-} else {
+if (process.env.ENVIRONMENT === 'production') {
     require('newrelic');
+} else {
+    server.use(express.errorHandler());
 }
+
 
 // Web routes
 web.get('/', function (req, res) {
@@ -66,14 +65,15 @@ api.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
 track.get('*', trackController.handle);
 
 // Subdomain -> express app map
-if ('development' == server.get('env')) {
-    server.use(express.vhost('localhost', api));
-    server.use(express.vhost('localhost', web));
-    server.use(express.vhost('localhost', track));
-} else {
+
+if (process.env.ENVIRONMENT === 'production') {
     server.use(express.vhost('track.' + config.domain, track));
     server.use(express.vhost('api.' + config.domain, api));
     server.use(express.vhost(config.domain, web));
+} else {
+    server.use(express.vhost('localhost', api));
+    server.use(express.vhost('localhost', web));
+    server.use(express.vhost('localhost', track));
 }
 
 // Run
