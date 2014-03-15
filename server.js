@@ -8,18 +8,18 @@ var track = module.exports = express();
 
 // Config
 var config = {
-    domain: 'wrapulous.com',
-    name: 'wrapulous',
-    publicPath: '/public',
-    viewPath: '/views',
-    rootDir: __dirname,
+  domain: 'wrapulous.com',
+  name: 'wrapulous',
+  publicPath: '/public',
+  viewPath: '/views',
+  rootDir: __dirname,
 };
 
 // Mongoose
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wrapulous');
 
 // Setup
-server.set('port', process.env.PORT || 6000);
+server.set('port', process.env.PORT || 5000);
 web.set('views', config.rootDir + config.viewPath);
 web.set('view engine', 'jade');
 web.use(express.compress());
@@ -32,9 +32,9 @@ web.use(express.static(config.rootDir + config.publicPath));
 api.use(require('./middleware.js').defaultContentType); // Forces application/json
 
 if (process.env.ENVIRONMENT === 'production') {
-    require('newrelic');
+  require('newrelic');
 } else {
-    server.use(express.errorHandler());
+  server.use(express.errorHandler());
 }
 
 
@@ -67,13 +67,13 @@ track.get('*', trackController.handle);
 // Subdomain -> express app map
 
 if (process.env.ENVIRONMENT === 'production') {
-    server.use(express.vhost('track.' + config.domain, track));
-    server.use(express.vhost('api.' + config.domain, api));
-    server.use(express.vhost(config.domain, web));
+  server.use(express.vhost('track.' + config.domain, track));
+  server.use(express.vhost('api.' + config.domain, api));
+  server.use(express.vhost(config.domain, web));
 } else {
-    server.use(express.vhost('localhost', api));
-    server.use(express.vhost('localhost', web));
-    server.use(express.vhost('localhost', track));
+  server.use(express.vhost('localhost', api));
+  server.use(express.vhost('localhost', web));
+  server.use(express.vhost('localhost', track));
 }
 
 // Run
