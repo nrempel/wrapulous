@@ -12,7 +12,10 @@
     "jade": "*",
     "stylus": "*",
     "bases": "*",
-    "newrelic": "*"
+    "newrelic": "*",
+    "bcrypt": "*",
+    "passport": "*",
+    "passport-local": "*"
   },
   "engines": {
     "node": "0.10.x"

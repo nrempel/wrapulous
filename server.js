@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 var express = require('express');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var middleware = require('./middleware.js');
 
 var server = module.exports = express();
 var web = module.exports = express();
@@ -29,7 +32,7 @@ server.use(express.bodyParser());
 server.use(express.methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
-api.use(require('./middleware.js').defaultContentType); // Forces application/json
+api.use(middleware.defaultContentType); // Forces application/json
 
 if (process.env.ENVIRONMENT === 'production') {
   require('newrelic');
@@ -37,6 +40,30 @@ if (process.env.ENVIRONMENT === 'production') {
   server.use(express.errorHandler());
 }
 
+// Authentication
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) return done(err);
+      if (!user) return done(null, false, { message: "Sorry, we don't recognize that username." });
+      user.validPassword(password, function(err, isMatch){
+        if(err) return done(err);
+        if(isMatch) return done(null, user);
+        else done(null, false, { message: 'Incorrect password.' });
+      });
+    });
+  }
+));
 
 // Web routes
 web.get('/', function (req, res) {
@@ -65,7 +92,6 @@ api.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
 track.get('*', trackController.handle);
 
 // Subdomain -> express app map
-
 if (process.env.ENVIRONMENT === 'production') {
   server.use(express.vhost('track.' + config.domain, track));
   server.use(express.vhost('api.' + config.domain, api));

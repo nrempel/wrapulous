@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
- 
+  Schema = mongoose.Schema,
+  ObjectId = Schema.ObjectId;
+
 var eventSchema = new Schema({
 	object: {
 		type: String,

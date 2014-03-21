@@ -1,8 +1,8 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId,
-    Event = require('./event.js');
- 
+  Schema = mongoose.Schema,
+  ObjectId = Schema.ObjectId,
+  Event = require('./event.js');
+
 var linkSchema = new Schema({
 	object: {
 		type: String,
@@ -17,7 +17,6 @@ var linkSchema = new Schema({
     url:  String,
     tag: String
 });
-
 
 linkSchema.methods.toJSON = function() {
   obj = this.toObject();
