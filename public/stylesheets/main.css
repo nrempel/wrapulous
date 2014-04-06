@@ -168,7 +168,7 @@ small,
   -moz-transform: scaleX(-1);
 /* Gecko */
   -o-transform: scaleX(-1);
-/* Operah */
+/* Opera */
   -webkit-transform: scaleX(-1);
 /* webkit */
   transform: scaleX(-1);

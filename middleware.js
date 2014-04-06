@@ -9,6 +9,13 @@ exports.defaultContentType = function (req, res, next) {
   else { next(); }
 };
 
+exports.addDate = function (req, res, next) {
+  var date = new Date();
+  var year = date.getFullYear();
+  res.locals.year = year;
+  next();
+};
+
 // If not authenticate, redirect to login
 function ensureAuthenticated(req, res, next){
   if (req.isAuthenticated()) return next();

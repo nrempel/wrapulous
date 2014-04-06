@@ -12,14 +12,15 @@ html
 
     body
 
-        div.ribbon-wrapper
-            div.ribbon
-                a(href='http://wrapulous.com') Request an API key
-
         header
             div.grid.grid-pad.text-center
                 h1 wrapulous
-                small.dark the simple link wrapping api
+                small.dark The simple link wrapping api
+            div.grid.grid-pad.text-center.small
+                div.nav.text-center
+                    a.no-under.inline(href='/') home |&nbsp;
+                    a.no-under.inline(href='http://docs.wrapulous.apiary.io/') docs |&nbsp;
+                    a.no-under.inline(href='/about') about
 
         div
             block content
@@ -27,6 +28,10 @@ html
         footer
             div.grid.grid-pad.text-center
                 small
-                    p.inline © #{year},
+                    p.inline © #{year}
                     | &nbsp;
-                    a.no-under(href='http://wrapulous.com') wrapulous
+                    a.no-under(href='http://r.empel.co') Nicholas Rempel
+
+            div.grid.grid-pad.text-center
+                <a href="https://twitter.com/nbrempel" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @nbrempel</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

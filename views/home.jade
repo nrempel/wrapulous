@@ -3,15 +3,14 @@ extends base
 block content
     div.grid.grid-pad
         div.col-1-2
-            h2 wrap a link
+            h2 Wrap a Link
             code
                 | curl api.wrapulous.com/api/v0/links \<br>
-                | -u key_ae11b850-7294-11e3-981f-0800200c9a66 \<br>
                 | -X POST \<br>
                 | -d '{"destination":"google.ca"}' \<br>
                 | -H 'Content-Type:application/json'
 
         div.col-1-2
-            h2 track a link
+            h2 Track a Link
             code
                 | curl api.wrapulous.com/api/v0/links/:id

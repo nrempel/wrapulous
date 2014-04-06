@@ -33,6 +33,7 @@ server.use(express.methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
 api.use(middleware.defaultContentType); // Forces application/json
+web.use(middleware.addDate); // Adds date to every template render
 
 if (process.env.ENVIRONMENT === 'production') {
   require('newrelic');
@@ -67,13 +68,15 @@ passport.use(new LocalStrategy(
 
 // Web routes
 web.get('/', function (req, res) {
-    var date = new Date();
-    var year = date.getFullYear();
-    res.render('index', {year: year});
+    res.render('home');
 });
 
 web.get('/docs', function (req, res) {
     res.render('docs');
+});
+
+web.get('/about', function (req, res) {
+    res.render('about');
 });
 
 // Controllers
@@ -85,8 +88,8 @@ var trackController = require('./controllers/track.js');
 api.get('/api/v0/links', linkController.list);
 api.get('/api/v0/links/:linkId', linkController.details);
 api.post('/api/v0/links', linkController.create);
-api.get('/api/v0/link/:linkId/events', eventController.list);
-api.get('/api/v0/link/:linkId/events/:eventId', eventController.details);
+api.get('/api/v0/links/:linkId/events', eventController.list);
+api.get('/api/v0/links/:linkId/events/:eventId', eventController.details);
 
 // Track routes
 track.get('*', trackController.handle);

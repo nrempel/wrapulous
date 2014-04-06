@@ -50,7 +50,6 @@ exports.create = function (req, res) {
 
     link.save(function (err, link) {
         if (err) { console.log(err); }
-        res.send(link);
+        res.send(link, 201);
     });
 };
-
