@@ -93,6 +93,7 @@ track.get('*', trackController.handle);
 
 // Subdomain -> express app map
 if (process.env.ENVIRONMENT === 'production') {
+  server.use(express.vhost('wrpls.com', track));
   server.use(express.vhost('track.' + config.domain, track));
   server.use(express.vhost('api.' + config.domain, api));
   server.use(express.vhost(config.domain, web));
