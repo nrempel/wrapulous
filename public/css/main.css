@@ -1,0 +1,154 @@
+/** BASE STYLES **/
+body {
+  font-family: 'Merriweather Sans', serif;
+  background-color: #fff;
+  color: #000;
+}
+body,
+html {
+  height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+/* STICKY FOOTER */
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -65px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer,
+.page-wrap:after {
+  height: 65px;
+}
+/** HEADER **/
+header {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #efefef;
+}
+header .grid {
+  max-width: 1100px;
+}
+header .title {
+  font-size: 26px;
+  font-weight: 800;
+}
+header .title a {
+  color: inherit;
+}
+header .title img {
+  width: 50px;
+  height: 50px;
+  margin-right: 0.3em;
+  margin-left: 1em;
+}
+header .nav {
+  font-weight: 100;
+  height: 56px;
+  line-height: 56px;
+}
+header .nav a {
+  padding-right: 1em;
+  padding-left: 1em;
+}
+header .nav .bubble:hover {
+  background: #fafafa;
+  border-radius: 25px;
+}
+/** FOOTER **/
+footer {
+  border-top: 1px solid #efefef;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+footer .grid {
+  max-width: 1100px;
+}
+footer .footer-content {
+  margin-right: 0.4em;
+  margin-left: 0.4em;
+}
+/** BASE STYLES **/
+/** LINKS **/
+/** HELPERS **/
+.inline-block {
+  display: inline-block;
+}
+.vert-align {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.inline {
+  display: inline;
+}
+.marg-tb {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.marg-tb-2 {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+.text-center {
+  text-align: center;
+}
+.pull-right {
+  float: right;
+}
+.no-under {
+  text-decoration: none;
+}
+.italic {
+  font-style: italic;
+}
+.dark {
+  color: #222;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.fit {
+  width: 100%;
+}
+.plain-link {
+  color: inherit;
+}
+.subtle {
+  color: #a2a2a2;
+  font-weight: 100;
+}
+small,
+.small {
+  font-size: 0.8em;
+}
+.reverse {
+  display: inline-block;
+  -moz-transform: scaleX(-1);
+/* Gecko */
+  -o-transform: scaleX(-1);
+/* Opera */
+  -webkit-transform: scaleX(-1);
+/* webkit */
+  transform: scaleX(-1);
+/* standard */
+  filter: FlipH;
+/* IE 6/7/8 */
+}
