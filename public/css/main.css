@@ -44,10 +44,10 @@ header {
   border-bottom: 1px solid #efefef;
 }
 header .grid {
-  max-width: 1100px;
+  max-width: none;
 }
 header .title {
-  font-size: 26px;
+  font-size: 29px;
   font-weight: 800;
 }
 header .title a {
@@ -56,10 +56,11 @@ header .title a {
 header .title img {
   width: 50px;
   height: 50px;
-  margin-right: 0.3em;
+  margin-right: 0.4em;
   margin-left: 1em;
 }
 header .nav {
+  float: right;
   font-weight: 100;
   height: 56px;
   line-height: 56px;
@@ -86,7 +87,25 @@ footer .footer-content {
   margin-left: 0.4em;
 }
 /** BASE STYLES **/
+.content {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+.content .grid {
+  max-width: 980px;
+}
 /** LINKS **/
+/** INPUTS **/
+input[type="url"],
+textarea {
+  text-align: center;
+  width: 100%;
+  margin: 1em 0 0.2em 0;
+  border: 1px solid #ddd;
+  font-size: 0.8em;
+  outline: none;
+  padding: 0.5em;
+}
 /** HELPERS **/
 .inline-block {
   display: inline-block;
@@ -151,4 +170,20 @@ small,
 /* standard */
   filter: FlipH;
 /* IE 6/7/8 */
+}
+/** FINAL MEDIA QUERIES **/
+@media handheld, only screen and (max-width: 767px) {
+  header .title {
+    text-align: center;
+  }
+  header .title a {
+    float: none;
+  }
+  header .title a img {
+    margin-left: 0;
+  }
+  header .nav {
+    float: none;
+    text-align: center;
+  }
 }

@@ -135,7 +135,7 @@ body {
                 padding-left: 0;
                 padding-right: 0;
         }
-        
+
         [class*='col-'] {
                 width: auto;
                 float: none;

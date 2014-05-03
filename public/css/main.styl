@@ -29,22 +29,23 @@ html, body
 /** HEADER **/
 header
   .grid
-    max-width: 1100px
+    max-width: none
   // background-color: #f9f9f9
   padding-top: 1em
   padding-bottom: 1em
   border-bottom: 1px solid #efefef
   .title
-    font-size: 26px
+    font-size: 29px
     font-weight 800
     a
       color: inherit
     img
       width: 50px
       height: 50px
-      margin-right: .3em
+      margin-right: .4em
       margin-left: 1em
   .nav
+    float: right
     font-weight: 100
     height: 56px
     line-height: 56px
@@ -69,7 +70,11 @@ footer
     margin-left: .4em
 
 /** BASE STYLES **/
-
+.content
+  padding-top: 3em
+  padding-bottom: 3em
+  .grid
+    max-width: 980px
 
 /** LINKS **/
 // a
@@ -90,6 +95,42 @@ footer
 // a:active > img
 //   opacity: 0.8
 
+/** INPUTS **/
+input[type="url"],
+textarea
+  text-align: center
+  width: 100%
+  margin: 1.0em 0 0.2em 0
+  border: 1px solid #ddd
+  font-size: 0.8em
+  outline: none
+  padding: 0.5em
+
+
+// input[type="password"],
+// input[type="text"]:active, textarea:active,
+// input[type="password"]:active, textarea:active,
+// input[type="text"]:focus, textarea:focus
+// input[type="password"]:focus, textarea:focus
+//   border: 1px solid #aaa
+//   outline: none
+// input[type="text"].error, textarea.error
+//   border: 1px solid #DF3030
+//
+// button
+//   background-color: #58A346
+//   color: #fff
+//   text-shadow: 0 0 4px rgba(0,0,0,0.2)
+//   font-size: 1.0em
+//   border: 0
+//   padding: 0.5em 1em
+//   cursor: pointer
+// button.secondary
+//   background-color: #BC812D
+// button:hover
+//   opacity: 0.9
+// button:active
+//   opacity: 0.8
 
 /** HELPERS **/
 .inline-block
@@ -134,3 +175,18 @@ small, .small
   -webkit-transform: scaleX(-1); /* webkit */
   transform: scaleX(-1); /* standard */
   filter: FlipH; /* IE 6/7/8 */
+
+
+/** FINAL MEDIA QUERIES **/
+@media handheld, only screen and (max-width: 767px)
+
+  header
+    .title
+      text-align: center
+      a
+        float: none
+        img
+          margin-left: 0
+    .nav
+      float: none
+      text-align: center
