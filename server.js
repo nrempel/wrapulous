@@ -107,6 +107,13 @@ if (process.env.ENVIRONMENT === 'production') {
   server.use(express.vhost('localhost', track));
 }
 
+// CORS
+server.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
 // Run
 server.listen(server.get('port'));
 console.log('Started ' + config.name + ' on port ' + server.get('port'));
