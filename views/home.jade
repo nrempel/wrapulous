@@ -1,13 +1,15 @@
 extends base
 
-block content
+block js
+  script(src='/js/home.js')
 
+block content
   div.grid.grid-pad
     div.col-1-1
       h1.text-center Wrapulous is a simple link shortening and click tracking API.
-      input(id='url' class='url' type='url' placeholder='Paste a link here to shorten it.')
+      input(id='shortener' type='url' placeholder='Paste a link here to shorten it.')
   div.grid.grid-pad
     div.col-1-2
-      h2
+      //- h2
 
     div.col-1-2

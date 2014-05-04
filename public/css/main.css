@@ -88,8 +88,8 @@ footer .footer-content {
 }
 /** BASE STYLES **/
 .content {
-  padding-top: 3em;
-  padding-bottom: 3em;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 .content .grid {
   max-width: 980px;

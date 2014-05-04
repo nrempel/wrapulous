@@ -33,6 +33,7 @@ server.use(express.methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
 api.use(middleware.defaultContentType); // Forces application/json
+api.use(middleware.addRequestedWith);
 web.use(middleware.addDate); // Adds date to every template render
 
 if (process.env.ENVIRONMENT === 'production') {
