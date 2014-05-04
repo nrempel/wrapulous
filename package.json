@@ -15,7 +15,8 @@
     "newrelic": "*",
     "bcrypt": "*",
     "passport": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "request": "*"
   },
   "engines": {
     "node": "0.10.x"
