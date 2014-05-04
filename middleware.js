@@ -10,7 +10,7 @@ exports.defaultContentType = function (req, res, next) {
 };
 
 exports.addRequestedWith = function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Headers', 'x-requested-with');
+  res.setHeader('Access-Control-Allow-Origin', 'x-requested-with');
   return next();
 };
 
