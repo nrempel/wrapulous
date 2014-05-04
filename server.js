@@ -86,11 +86,11 @@ var eventController = require('./controllers/v0/event.js');
 var trackController = require('./controllers/track.js');
 
 // API routes
-api.get('/api/v0/links', linkController.list);
-api.get('/api/v0/links/:linkId', linkController.details);
-api.post('/api/v0/links', linkController.create);
-api.get('/api/v0/links/:linkId/events', eventController.list);
-api.get('/api/v0/links/:linkId/events/:eventId', eventController.details);
+api.get('/api/v0/links', cors(), linkController.list);
+api.get('/api/v0/links/:linkId', cors(), linkController.details);
+api.post('/api/v0/links', cors(), linkController.create);
+api.get('/api/v0/links/:linkId/events', cors(), eventController.list);
+api.get('/api/v0/links/:linkId/events/:eventId', cors(), eventController.details);
 
 // Track routes
 track.get('*', trackController.handle);
@@ -106,9 +106,6 @@ if (process.env.ENVIRONMENT === 'production') {
   server.use(express.vhost('localhost', web));
   server.use(express.vhost('localhost', track));
 }
-
-// Allow CORS
-server.use(cors());
 
 // Run
 server.listen(server.get('port'));
