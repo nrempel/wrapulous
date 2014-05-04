@@ -7,7 +7,7 @@ $(function () {
 
       $.ajax({
         type: "POST",
-        url: '/ajax/shorten_url',
+        url: '/ajax/shorten_url/',
         data: JSON.stringify({destination: url})
       })
       .done(function( msg ) {

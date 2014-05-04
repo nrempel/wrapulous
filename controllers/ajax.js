@@ -1,6 +1,6 @@
 var request = require('request');
 
-exports.shorten_url = function (req, res) {
+exports.shorten_url = function (request, response) {
   var url = request.body.destination;
   var request_json = JSON.stringify({
     destination: url
