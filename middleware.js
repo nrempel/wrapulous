@@ -9,11 +9,6 @@ exports.defaultContentType = function (req, res, next) {
   else { next(); }
 };
 
-exports.addRequestedWith = function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'x-requested-with');
-  return next();
-};
-
 exports.addDate = function (req, res, next) {
   var date = new Date();
   var year = date.getFullYear();
