@@ -7,8 +7,8 @@ $(function () {
 
       $.ajax({
         type: "POST",
-        url: 'http://api.wrapulous.com/api/v0/links',
-        data: { destination: url }
+        url: '/ajax/shorten_url',
+        data: JSON.stringify({destination: url})
       })
       .done(function( msg ) {
         console.log('done: ' + msg);

@@ -1,4 +1,3 @@
-var cors = require('cors');
 var mongoose = require('mongoose');
 var express = require('express');
 var passport = require('passport');
@@ -80,17 +79,21 @@ web.get('/about', function (req, res) {
     res.render('about');
 });
 
+// AJAX routes
+var ajax = require('./controllers/ajax.js');
+web.get('/ajax/shorten_url', ajax.shorten_url);
+
 // Controllers
 var linkController = require('./controllers/v0/link.js');
 var eventController = require('./controllers/v0/event.js');
 var trackController = require('./controllers/track.js');
 
 // API routes
-api.get('/api/v0/links', cors(), linkController.list);
-api.get('/api/v0/links/:linkId', cors(), linkController.details);
-api.post('/api/v0/links', cors(), linkController.create);
-api.get('/api/v0/links/:linkId/events', cors(), eventController.list);
-api.get('/api/v0/links/:linkId/events/:eventId', cors(), eventController.details);
+api.get('/api/v0/links', linkController.list);
+api.get('/api/v0/links/:linkId', linkController.details);
+api.post('/api/v0/links', linkController.create);
+api.get('/api/v0/links/:linkId/events', eventController.list);
+api.get('/api/v0/links/:linkId/events/:eventId', eventController.details);
 
 // Track routes
 track.get('*', trackController.handle);
@@ -106,21 +109,6 @@ if (process.env.ENVIRONMENT === 'production') {
   server.use(express.vhost('localhost', web));
   server.use(express.vhost('localhost', track));
 }
-
-// Enables CORS
-server.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-
-  // intercept OPTIONS method
-  if ('OPTIONS' == req.method) {
-    res.send(200);
-  }
-  else {
-    next();
-  }
-});
 
 // Run
 server.listen(server.get('port'));
