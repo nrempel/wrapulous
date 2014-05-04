@@ -107,7 +107,8 @@ if (process.env.ENVIRONMENT === 'production') {
   server.use(express.vhost('localhost', track));
 }
 
-api.use(cors());
+// Allow CORS
+server.use(cors());
 
 // Run
 server.listen(server.get('port'));
