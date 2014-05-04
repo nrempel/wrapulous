@@ -34,7 +34,6 @@ server.use(express.methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
 api.use(middleware.defaultContentType); // Forces application/json
-api.use(cors());
 web.use(middleware.addDate); // Adds date to every template render
 
 if (process.env.ENVIRONMENT === 'production') {
@@ -107,6 +106,8 @@ if (process.env.ENVIRONMENT === 'production') {
   server.use(express.vhost('localhost', web));
   server.use(express.vhost('localhost', track));
 }
+
+api.use(cors());
 
 // Run
 server.listen(server.get('port'));
