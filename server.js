@@ -81,7 +81,7 @@ web.get('/about', function (req, res) {
 
 // AJAX routes
 var ajax = require('./controllers/ajax.js');
-web.get('/ajax/shorten_url', ajax.shorten_url);
+web.post('/ajax/shorten_url', ajax.shorten_url);
 
 // Controllers
 var linkController = require('./controllers/v0/link.js');
