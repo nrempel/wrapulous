@@ -6,7 +6,8 @@ $(function () {
       var url = $("#shortener").val();
 
       $.ajax({
-        type: "POST",
+        type: 'POST',
+        contentType: 'application/json',
         url: '/ajax/shorten_url/',
         data: JSON.stringify({destination: url})
       })

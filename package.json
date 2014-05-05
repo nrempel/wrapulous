@@ -8,6 +8,13 @@
   "dependencies": {
     "express": "*",
     "mongoose": "*",
+    "compression": "*",
+    "serve-favicon": "*",
+    "morgan": "*",
+    "body-parser": "*",
+    "method-override": "*",
+    "errorhandler": "*",
+    "vhost": "*",
     "node-uuid": "*",
     "jade": "*",
     "stylus": "*",

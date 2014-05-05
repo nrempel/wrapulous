@@ -1,5 +1,12 @@
 var mongoose = require('mongoose');
 var express = require('express');
+var compress = require('compression');
+var favicon = require('serve-favicon');
+var morgan  = require('morgan');
+var bodyParser = require('body-parser');
+var errorHandler = require('errorhandler');
+var methodOverride = require('method-override');
+var vhost = require('vhost');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var middleware = require('./middleware.js');
@@ -25,11 +32,11 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/wrapulou
 server.set('port', process.env.PORT || 5000);
 web.set('views', config.rootDir + config.viewPath);
 web.set('view engine', 'jade');
-web.use(express.compress());
-web.use(express.favicon(config.rootDir + config.publicPath + '/favicon.ico'));
-server.use(express.logger('dev'));
-server.use(express.bodyParser());
-server.use(express.methodOverride());
+web.use(compress());
+web.use(favicon(config.rootDir + config.publicPath + '/favicon.ico'));
+server.use(morgan('dev'));
+server.use(bodyParser());
+server.use(methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
 api.use(middleware.defaultContentType); // Forces application/json
@@ -38,7 +45,7 @@ web.use(middleware.addDate); // Adds date to every template render
 if (process.env.ENVIRONMENT === 'production') {
   require('newrelic');
 } else {
-  server.use(express.errorHandler());
+  server.use(errorHandler());
 }
 
 // Authentication
@@ -100,14 +107,14 @@ track.get('*', trackController.handle);
 
 // Subdomain -> express app map
 if (process.env.ENVIRONMENT === 'production') {
-  server.use(express.vhost('wrpls.com', track));
-  server.use(express.vhost('track.' + config.domain, track));
-  server.use(express.vhost('api.' + config.domain, api));
-  server.use(express.vhost(config.domain, web));
+  server.use(vhost('wrpls.com', track));
+  server.use(vhost('track.' + config.domain, track));
+  server.use(vhost('api.' + config.domain, api));
+  server.use(vhost(config.domain, web));
 } else {
-  server.use(express.vhost('localhost', api));
-  server.use(express.vhost('localhost', web));
-  server.use(express.vhost('localhost', track));
+  server.use(vhost('localhost', api));
+  server.use(vhost('localhost', web));
+  server.use(vhost('localhost', track));
 }
 
 // Run
