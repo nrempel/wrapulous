@@ -10,7 +10,7 @@ exports.shorten_url = function (req, res) {
     url: 'http://api.wrapulous.com/api/v0/links/',
     json: request_json
   }, function (err, res, body) {
-    console.log();
+    
   });
 
 
