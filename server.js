@@ -35,7 +35,7 @@ web.set('view engine', 'jade');
 web.use(compress());
 web.use(favicon(config.rootDir + config.publicPath + '/favicon.ico'));
 server.use(morgan('dev'));
-// server.use(bodyParser());
+server.use(bodyParser());
 server.use(methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
