@@ -1,5 +1,4 @@
-// On enter
-
+// On enter press
 $(function () {
   $('#shortener').keypress(function (event) {
     if (event.which == 13) {
@@ -11,14 +10,11 @@ $(function () {
         url: '/ajax/shorten_url/',
         data: JSON.stringify({destination: url})
       })
-      .done(function( msg ) {
-        console.log('done: ' + msg);
+      .done(function(msg) {
+        console.log(msg);
       })
-      .fail(function( msg ) {
-        console.log('fail: ' + msg);
-      })
-      .always(function( msg ) {
-        console.log('always: ' + msg);
+      .fail(function(msg) {
+        console.log(msg);
       });
     }
   });

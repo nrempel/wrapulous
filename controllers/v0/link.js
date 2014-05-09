@@ -1,3 +1,5 @@
+var validator = require('validator');
+
 var helpers = require('../helpers.js');
 var Link = require('../../models/link.js');
 
@@ -42,14 +44,20 @@ exports.create = function (req, res) {
 	var tag = helpers.generateBase62(6);
 	var destination = req.body.destination;
 
-    var link = new Link({
-        destination: destination,
-        url: 'wrpls.com',
-        tag: tag
-    });
+	if (!validator.isURL(destination)) {
+		res.send(destination + ' is not a valid URL.', 400);
+	}
 
-    link.save(function (err, link) {
-        if (err) { console.log(err); }
-        res.send(link, 201);
-    });
+  var link = new Link({
+      destination: destination,
+      url: 'wrpls.com',
+      tag: tag
+  });
+
+  link.save(function (err, link) {
+      if (err) {
+				res.send(err, 500);
+			}
+      res.send(link, 201);
+  });
 };
