@@ -7,7 +7,7 @@ exports.shorten_url = function (req, res) {
   //   destination: url
   // });
 
-  var request_json = '{"test": "test"}';
+  var request_json = {test: "test"};
 
   request.post({
     url: 'http://api.wrapulous.com/api/v0/links/',
