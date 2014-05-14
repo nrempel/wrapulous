@@ -45,7 +45,7 @@ exports.create = function (req, res) {
 	var destination = req.body.destination;
 
 	if (!validator.isURL(destination)) {
-		res.send(destination + ' is not a valid URL.', 400);
+		res.send(400, destination + ' is not a valid URL.');
 	}
 
   var link = new Link({

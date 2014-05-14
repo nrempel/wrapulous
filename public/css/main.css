@@ -50,6 +50,10 @@ header .title {
   font-size: 29px;
   font-weight: 800;
 }
+header .title span {
+  font-size: 29px;
+  font-weight: 800;
+}
 header .title a {
   color: inherit;
 }
@@ -94,13 +98,28 @@ footer .footer-content {
 .content .grid {
   max-width: 980px;
 }
+.content .title {
+  font-size: 29px;
+  font-weight: 800;
+}
 /** LINKS **/
 /** INPUTS **/
+input {
+  transition: box-shadow 1s linear;
+  border: 2px solid #dadada;
+  border-radius: 7px;
+}
+.glow-green {
+  box-shadow: 0 0 7px #0a0;
+}
+.glow-red {
+  box-shadow: 0 0 7px #a00;
+}
 input[type="url"],
 textarea {
   text-align: center;
   width: 100%;
-  margin: 1em 0 0.2em 0;
+  margin: 1em 0 1em 0;
   border: 1px solid #ddd;
   font-size: 0.8em;
   outline: none;
