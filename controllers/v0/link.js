@@ -56,8 +56,8 @@ exports.create = function (req, res) {
 
   link.save(function (err, link) {
       if (err) {
-				res.send(err, 500);
+				res.send(500, err);
 			}
-      res.send(link, 201);
+      res.send(201, link);
   });
 };
