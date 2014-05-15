@@ -6,7 +6,7 @@ html
     link(rel='stylesheet', href='/css/simplegrid.css')
     link(rel='stylesheet', href='/css/ribbon.css')
     link(rel='stylesheet', href='/css/main.css')
-    link(href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,800,700,300,300italic,400italic' rel='stylesheet' type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css')
     script(src='/js/lib/jquery.js')
     block js
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-49233010-1', 'wrapulous.com');ga('require', 'displayfeatures');ga('send', 'pageview');</script>
@@ -24,16 +24,16 @@ html
             div.col-7-12
               div.nav
                 a(href='/').plain-link.no-under.vert-align.bubble Home
-                a(href='/docs').plain-link.no-under.vert-align.bubble Docs
-                a(href='/about').plain-link.no-under.vert-align.bubble About
+                a(href='/#').plain-link.no-under.vert-align.bubble Docs
+                a(href='/#').plain-link.no-under.vert-align.bubble About
 
         div.content
           block content
 
       footer.site-footer
-        div.grid.text-center
+        div.grid
           col-1-1
-            small.subtle.footer-content
+            small.subtle.footer-content.pull-right
               p.inline © #{year}
               | &nbsp;
               a.plain-link(href='http://r.empel.co') Nicholas Rempel
