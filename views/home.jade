@@ -8,7 +8,10 @@ block content
     div.col-1-1
       h1.text-center
         | Wrapulous is a simple link shortening and click tracking API.
-      input(id='shortener' type='url' placeholder='Paste a link here to shorten it.')
+      input(id='shortener-input' type='url' placeholder='Paste a link here to shorten it.')
+      div.shortener-button-container
+        button(id='shortener-button' class='ladda-button' data-style='expand-right' data-color='mint' data-size='s')
+          span(class="ladda-label") Submit
 
   div.grid.grid-pad.result.result-hide
     div.col-1-2.text-center

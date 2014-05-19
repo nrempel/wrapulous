@@ -46,8 +46,6 @@ header
 footer
   .grid
     max-width: none
-  // padding-top: 1em
-  // padding-bottom: 1em
   .footer-content
     margin-right: 1em
     margin-bottom: 1em
@@ -78,10 +76,11 @@ input
   transition: box-shadow 1s ease-in
   border:2px solid #dadada
   border-radius:7px
+  height: 35px
 input[type="url"],
 textarea
   text-align: center
-  width: 100%
+  width: 80%
   margin: 1.0em 0 1.0em 0
   border: 1px solid #ddd
   font-size: 0.8em
@@ -93,6 +92,16 @@ textarea
 .glow-red
   box-shadow:0 0 7px #a00
   transition: box-shadow .1s ease
+
+/** BUTTONS **/
+.shortener-button-container
+  button
+    height: 35px
+    width: 80%
+    border-radius:7px
+  width: 20%
+  text-align: center
+  display: inline-block
 
 /** HELPERS **/
 .inline-block
@@ -170,3 +179,8 @@ html, body
 .site-footer, .page-wrap:after
   // .push must be the same height as footer
   height: 1.9em
+
+
+/** LADDA EXTENSIONS **/
+.ladda-button[data-color=dusty-brown]{background: #8b6969}
+.ladda-button[data-color=dusty-brown]:hover{background: #a38787}

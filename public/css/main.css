@@ -75,11 +75,12 @@ input {
   transition: box-shadow 1s ease-in;
   border: 2px solid #dadada;
   border-radius: 7px;
+  height: 35px;
 }
 input[type="url"],
 textarea {
   text-align: center;
-  width: 100%;
+  width: 80%;
   margin: 1em 0 1em 0;
   border: 1px solid #ddd;
   font-size: 0.8em;
@@ -93,6 +94,17 @@ textarea {
 .glow-red {
   box-shadow: 0 0 7px #a00;
   transition: box-shadow 0.1s ease;
+}
+/** BUTTONS **/
+.shortener-button-container {
+  width: 20%;
+  text-align: center;
+  display: inline-block;
+}
+.shortener-button-container button {
+  height: 35px;
+  width: 80%;
+  border-radius: 7px;
 }
 /** HELPERS **/
 .inline-block {
@@ -198,4 +210,11 @@ body {
 .site-footer,
 .page-wrap:after {
   height: 1.9em;
+}
+/** LADDA EXTENSIONS **/
+.ladda-button[data-color=dusty-brown] {
+  background: #8b6969;
+}
+.ladda-button[data-color=dusty-brown]:hover {
+  background: #a38787;
 }
