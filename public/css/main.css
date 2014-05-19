@@ -6,12 +6,16 @@ body {
   font-size: 19px;
   margin: inherit;
 }
+body .grid {
+  max-width: 900px;
+}
 body,
 html {
   height: 100%;
 }
 /** HEADER **/
 header {
+  font-size: 21px;
   padding-top: 1em;
   padding-bottom: 1em;
 }
@@ -37,7 +41,8 @@ header .nav {
   height: 56px;
   line-height: 56px;
   margin-right: 1em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
+  margin-top: 1em;
 }
 header .nav a {
   padding-right: 1em;
@@ -56,9 +61,20 @@ footer .footer-content {
 }
 /** BASE STYLES **/
 .content {
-  font-size: 18px;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  font-size: 19px;
+}
+.content .result {
+  border: 0.1em dashed #ddd;
+  border-radius: 10px;
+}
+.content #details {
+  transition: opacity 2s ease;
+}
+.content .details-hide {
+  opacity: 0;
+}
+.content .details-show {
+  opacity: 1;
 }
 /** LINKS **/
 a {
@@ -73,9 +89,7 @@ header a:active {
 /** INPUTS **/
 input {
   transition: box-shadow 1s ease-in;
-  border: 2px solid #dadada;
   border-radius: 7px;
-  height: 35px;
 }
 input[type="url"],
 textarea {
@@ -102,8 +116,6 @@ textarea {
   display: inline-block;
 }
 .shortener-button-container button {
-  height: 35px;
-  width: 80%;
   border-radius: 7px;
 }
 /** HELPERS **/
@@ -192,9 +204,6 @@ small,
   }
 }
 /* STICKY FOOTER */
-* {
-  margin: 0;
-}
 html,
 body {
   height: 100%;

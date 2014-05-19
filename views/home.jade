@@ -10,14 +10,24 @@ block content
         | Wrapulous is a simple link shortening and click tracking API.
       input(id='shortener-input' type='url' placeholder='Paste a link here to shorten it.')
       div.shortener-button-container
-        button(id='shortener-button' class='ladda-button' data-style='expand-right' data-color='mint' data-size='s')
+        button(id='shortener-button' class='ladda-button' data-style='expand-left' data-color='dusty-brown' data-size='s')
           span(class="ladda-label") Submit
 
-  div.grid.grid-pad.result.result-hide
-    div.col-1-2.text-center
-      h2.marg-tb-2 Short Link:
-      a#short-link
+  div.grid.grid-pad
+    div.col-1-1
+      div.result
+        h2.text-center
+          span(id='short-link-placeholder') Enter a link above to shorten it!
+          a(id='short-link')
 
-    div.col-1-2.text-center
-      h2.marg-tb-2 Tracking Data:
-      a#tracking-data
+  div.grid.grid-pad
+    div.col-1-1
+      div#details.details-hide
+        h2 What's So Great About This?
+        p
+          | This form is just an example of the Wrapulous click-tracking API.
+          | You can see the tracking data for this link&nbsp;
+          a(id='tracking-data') here
+          | . Check out the&nbsp;
+          a(href='/#') documentation&nbsp;
+          | for details on how to wrap links yourself!

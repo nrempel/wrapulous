@@ -1,5 +1,7 @@
 /** BASE STYLES **/
 body
+  .grid
+    max-width: 900px
   font-family: 'Open Sans Condensed', sans-serif
   background-color: white
   color: black
@@ -10,8 +12,7 @@ body,html
 
 /** HEADER **/
 header
-  .grid
-    // max-width: 900px
+  font-size: 21px
   padding-top: 1em
   padding-bottom: 1em
   .title
@@ -34,7 +35,8 @@ header
     height: 56px
     line-height: 56px
     margin-right: 1em
-    margin-bottom: .5em
+    margin-bottom: 1em
+    margin-top: 1em
     a
       padding-right: 1em
       padding-left: 1em
@@ -52,16 +54,17 @@ footer
 
 /** BASE STYLES **/
 .content
-  font-size: 18px
-  padding-top: 2em
-  padding-bottom: 2em
-  // .result
-  //   transition: opacity 2s ease
-  //   .result-hide
-  //     h2
-  //       opacity: 0
-  //   .result-show
-  //     opacity: 1
+  font-size: 19px
+  .result
+    // height: 80px
+    border: 0.1em dashed #ddd
+    border-radius: 10px
+  #details
+    transition: opacity 2s ease
+  .details-hide
+    opacity: 0
+  .details-show
+    opacity: 1
 
 /** LINKS **/
 a
@@ -74,9 +77,8 @@ header a:active
 /** INPUTS **/
 input
   transition: box-shadow 1s ease-in
-  border:2px solid #dadada
   border-radius:7px
-  height: 35px
+  // height: 35px
 input[type="url"],
 textarea
   text-align: center
@@ -96,8 +98,8 @@ textarea
 /** BUTTONS **/
 .shortener-button-container
   button
-    height: 35px
-    width: 80%
+    // height: 35px
+    // width: 90%
     border-radius:7px
   width: 20%
   text-align: center
@@ -163,10 +165,7 @@ small, .small
       text-align: center
       border-bottom: none
 
-
 /* STICKY FOOTER */
-*
-  margin: 0
 html, body
   height: 100%
 .page-wrap

@@ -25,15 +25,25 @@ $(function () {
       // TODO: Store which proto in db
 
       // Update dom to match response
-      $("#short-link").attr('href', 'http://' + msg.url + '/' + msg.tag)
+      $("#short-link-placeholder").remove();
+
+      $("#short-link")
+        .attr('href', 'http://' + msg.url + '/' + msg.tag)
+        .attr('target', '_blank')
         .text('http://' + msg.url + '/' + msg.tag);
 
-      $("#tracking-data").attr('href', 'http://api.wrapulous.com/api/v0/links/' + msg.tag + '/events/')
-        .text('http://api.wrapulous.com/api/v0/links/' + msg.tag + '/events/');
+      $("#tracking-data")
+        .attr('href', 'http://api.wrapulous.com/api/v0/links/' + msg.tag + '/')
+        .attr('target', '_blank');
+
+      $('#details').removeClass('details-hide');
+      $('#details').removeClass('details-show');
+
     })
     .fail(function(msg) {
       console.log(msg);
       // Glow some stuff
+      $("#short-link-placeholder").text('Enter a valid link.');
       shortenerInput.addClass('glow-red');
       setTimeout(function(){
         shortenerInput.removeClass('glow-red');
