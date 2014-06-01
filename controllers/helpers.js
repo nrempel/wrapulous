@@ -1,5 +1,6 @@
 var bases = require('bases');
 var crypto = require('crypto');
+var Promise = require('bluebird');
 
 exports.generateBase62 = function (length) {
   var maxNum = Math.pow(62, length);
@@ -17,4 +18,19 @@ exports.generateBase62 = function (length) {
   } while (num >= maxNum);
 
   return bases.toBase62(num);
+};
+
+exports.promiseWhile = function(condition, action) {
+    var resolver = Promise.defer();
+
+    var loop = function() {
+        if (!condition()) return resolver.resolve();
+        return Promise.cast(action())
+            .then(loop)
+            .catch(resolver.reject);
+    };
+
+    process.nextTick(loop);
+
+    return resolver.promise;
 };

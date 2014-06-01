@@ -1,3 +1,4 @@
+var Promise = require('bluebird');
 var validator = require('validator');
 
 var helpers = require('../helpers.js');
@@ -41,23 +42,46 @@ exports.details = function (req, res) {
 
 exports.create = function (req, res) {
 
+	// Generate tag
 	var tag = helpers.generateBase62(6);
-	var destination = req.body.destination;
 
-	if (!validator.isURL(destination)) {
-		res.send(400, destination + ' is not a valid URL.');
-	}
+	// Stopping condition
+	var loop = true;
 
-  var link = new Link({
-      destination: destination,
-      url: 'wrpls.com',
-      tag: tag
-  });
+	// Check for uniqueness
+	helpers.promiseWhile( function() {
+		return loop;
+	}, function () {
+		return new Promise( function(resolve, reject) {
+			Link.findOne({tag: tag}, function (err, link) {
+				if (err) { console.log(err); }
+				// If link is null then there is no collision
+				if (link === null) {
+					loop = false;
+				} else {
+					tag = helpers.generateBase62(6);
+				}
+				resolve();
+			});
+		});
+	}).then( function() {
+		var destination = req.body.destination;
 
-  link.save(function (err, link) {
-      if (err) {
-				res.send(500, err);
-			}
-      res.send(201, link);
-  });
+		if (!validator.isURL(destination)) {
+			res.send(400, destination + ' is not a valid URL.');
+		}
+
+		var link = new Link({
+				destination: destination,
+				url: 'wrpls.com',
+				tag: tag
+		});
+
+		link.save(function (err, link) {
+				if (err) {
+					res.send(500, err);
+				}
+				res.send(201, link);
+		});
+	});
 };
