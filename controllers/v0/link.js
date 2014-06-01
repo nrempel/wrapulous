@@ -65,23 +65,28 @@ exports.create = function (req, res) {
 			});
 		});
 	}).then( function() {
+
+		// The requested link to shorten
 		var destination = req.body.destination;
 
 		if (!validator.isURL(destination)) {
+			// The link to shorten is invalid
 			res.send(400, destination + ' is not a valid URL.');
+		} else {
+			// It's valid
+			var link = new Link({
+					destination: destination,
+					url: 'wrpls.com',
+					tag: tag
+			});
+
+			link.save(function (err, link) {
+					if (err) {
+						res.send(500, err);
+					} else {
+						res.send(201, link);
+					}
+			});
 		}
-
-		var link = new Link({
-				destination: destination,
-				url: 'wrpls.com',
-				tag: tag
-		});
-
-		link.save(function (err, link) {
-				if (err) {
-					res.send(500, err);
-				}
-				res.send(201, link);
-		});
 	});
 };
