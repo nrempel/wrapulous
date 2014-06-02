@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var methodOverride = require('method-override');
 var vhost = require('vhost');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var middleware = require('./middleware.js');
 
 var server = module.exports = express();
@@ -47,31 +45,6 @@ if (process.env.ENVIRONMENT === 'production') {
 } else {
   server.use(errorHandler());
 }
-
-// Authentication
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) return done(err);
-      if (!user) return done(null, false, { message: "Sorry, we don't recognize that username." });
-      user.validPassword(password, function(err, isMatch){
-        if(err) return done(err);
-        if(isMatch) return done(null, user);
-        else done(null, false, { message: 'Incorrect password.' });
-      });
-    });
-  }
-));
 
 // Web routes
 web.get('/', function (req, res) {

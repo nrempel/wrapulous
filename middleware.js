@@ -15,16 +15,3 @@ exports.addDate = function (req, res, next) {
   res.locals.year = year;
   next();
 };
-
-// If not authenticate, redirect to login
-function ensureAuthenticated(req, res, next){
-  if (req.isAuthenticated()) return next();
-  var destination = req.url;
-  res.redirect('/login?destination=' + destination);
-}
-
-// If already authenticated, redirect to dashboard
-function redirectAuthenticated(req, res, next){
-  if (req.isAuthenticated()) return res.redirect('/');
-  next();
-}
