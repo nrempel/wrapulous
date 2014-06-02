@@ -1,37 +1,55 @@
 {
   "name": "wrapulous",
-  "description": "A link wrapping API",
-  "keywords": [
-    "link",
-    "wrapping",
-    "api"
-  ],
-  "version": "0.0.1",
-  "author": "Nicholas Rempel",
+  "version": "0.9.0",
+  "description": "Wrapulous is a simple link shortening and click tracking API.",
   "main": "server.js",
   "dependencies": {
-    "bases": "*",
-    "bcrypt": "*",
-    "body-parser": "*",
-    "bluebird": "*",
-    "compression": "*",
-    "errorhandler": "*",
-    "express": "*",
-    "jade": "*",
-    "method-override": "*",
-    "mongoose": "*",
-    "morgan": "*",
-    "newrelic": "*",
-    "node-uuid": "*",
-    "passport": "*",
-    "passport-local": "*",
-    "request": "*",
-    "serve-favicon": "*",
-    "stylus": "*",
-    "validator": "*",
-    "vhost": "*"
+    "bcrypt": "0.7.8",
+    "bases": "0.2.1",
+    "bluebird": "1.2.4",
+    "body-parser": "1.3.0",
+    "compression": "1.0.3",
+    "cors": "2.2.0",
+    "errorhandler": "1.0.1",
+    "express": "4.4.0",
+    "jade": "1.3.1",
+    "method-override": "2.0.0",
+    "mongoose": "3.8.12",
+    "morgan": "1.1.1",
+    "newrelic": "1.7.0",
+    "node-uuid": "1.4.1",
+    "passport": "0.2.0",
+    "passport-local": "1.0.0",
+    "raml2html": "0.17.1",
+    "request": "2.36.0",
+    "serve-favicon": "2.0.0",
+    "stylus": "0.45.1",
+    "validator": "3.12.0",
+    "vhost": "1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nrempel/wrapulous.git"
+  },
+  "keywords": [
+    "link",
+    "shortening",
+    "click",
+    "tracking"
+  ],
+  "author": "Nicholas Rempel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nrempel/wrapulous/issues"
   },
   "engines": {
     "node": "0.10.x"
-  }
+  },
+  "main": "server.js",
+  "homepage": "http://wrapulous.com"
 }

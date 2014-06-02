@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
   ObjectId = Schema.ObjectId;
 
 var eventSchema = new Schema({
-	object: {
+  object: {
 		type: String,
 		default: 'event'
 	},
@@ -16,11 +16,11 @@ var eventSchema = new Schema({
     remoteAddress: String
 });
 
-eventSchema.methods.toJSON = function() {
-  obj = this.toObject();
-  delete obj._id;
-  delete obj.__v;
-  return obj;
+// Remove meta data from toJSON
+if (!eventSchema.options.toJSON) eventSchema.options.toJSON = {};
+eventSchema.options.toJSON.transform = function (doc, ret, options) {
+  delete ret._id;
+  delete ret.__v;
 };
 
 module.exports = mongoose.model('Event', eventSchema);

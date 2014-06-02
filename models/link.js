@@ -18,11 +18,11 @@ var linkSchema = new Schema({
     tag: String
 });
 
-linkSchema.methods.toJSON = function() {
-  obj = this.toObject();
-  delete obj._id;
-  delete obj.__v;
-  return obj;
+// Remove meta data from toJSON
+if (!linkSchema.options.toJSON) linkSchema.options.toJSON = {};
+linkSchema.options.toJSON.transform = function (doc, ret, options) {
+  delete ret._id;
+  delete ret.__v;
 };
 
 module.exports = mongoose.model('Link', linkSchema);

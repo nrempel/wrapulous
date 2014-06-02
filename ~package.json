@@ -1,0 +1,37 @@
+{
+  "name": "wrapulous",
+  "description": "A link wrapping API",
+  "keywords": [
+    "link",
+    "wrapping",
+    "api"
+  ],
+  "version": "0.0.1",
+  "author": "Nicholas Rempel",
+  "main": "server.js",
+  "dependencies": {
+    "bases": "*",
+    "bcrypt": "*",
+    "body-parser": "*",
+    "bluebird": "*",
+    "compression": "*",
+    "errorhandler": "*",
+    "express": "*",
+    "jade": "*",
+    "method-override": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "newrelic": "*",
+    "node-uuid": "*",
+    "passport": "*",
+    "passport-local": "*",
+    "request": "*",
+    "serve-favicon": "*",
+    "stylus": "*",
+    "validator": "*",
+    "vhost": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
