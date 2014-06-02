@@ -100,7 +100,6 @@ api.get('/api/v0/links', linkController.list);
 api.get('/api/v0/links/:linkId', linkController.details);
 api.post('/api/v0/links', linkController.create);
 api.get('/api/v0/links/:linkId/events', eventController.list);
-api.get('/api/v0/links/:linkId/events/:eventId', eventController.details);
 
 // Track routes
 track.get('*', trackController.handle);

@@ -6,7 +6,7 @@ var Link = require('../../models/link.js');
 
 // List links
 exports.list = function (req, res) {
-	var limit = Number(req.query.limit) || 10;
+	var limit = Number(req.query.limit) || 100;
 	var offset = Number(req.query.offset) || 0;
 	var sortBy = req.query.sortBy || 'created';
 	var sortOrder = Number(req.query.sortOrder) || -1;
