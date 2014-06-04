@@ -21,6 +21,9 @@ exports.addDate = function (req, res, next) {
 
 exports.attachApiKey = function (req, res, next) {
   // Get the api key...
+
+  console.log(req.headers);
+
   var header=req.headers.authorization || '', // get the header
       token=header.split(/\s+/).pop() || '', // and the encoded auth token
       auth=new Buffer(token, 'base64').toString(), // convert from base64

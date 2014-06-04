@@ -60,6 +60,7 @@ exports.create = function (req, res) {
 		account = req.account;
 	} else {
 		account = new Account();
+		account.save();
 		res.set('X-Api-Key', account.apiKey);
 	}
 
