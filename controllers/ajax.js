@@ -13,7 +13,7 @@ exports.shorten_url = function (req, res) {
       response.statusCode,
       {
         body: body,
-        apiKey: response.headers['X-Api-Key']
+        apiKey: response.headers['x-api-key']
       }
     );
   });
