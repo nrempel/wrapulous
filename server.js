@@ -38,6 +38,7 @@ server.use(methodOverride());
 web.use(require('stylus').middleware(config.rootDir + config.publicPath));
 web.use(express.static(config.rootDir + config.publicPath));
 api.use(middleware.defaultContentType); // Forces application/json
+api.use(middleware.attachApiKey);
 web.use(middleware.addDate); // Adds date to every template render
 
 if (process.env.ENVIRONMENT === 'production') {
@@ -64,15 +65,40 @@ var ajax = require('./controllers/ajax.js');
 web.post('/ajax/shorten_url/', ajax.shorten_url);
 
 // Controllers
+var accountController = require('./controllers/v0/account.js');
 var linkController = require('./controllers/v0/link.js');
 var eventController = require('./controllers/v0/event.js');
 var trackController = require('./controllers/track.js');
 
 // API routes
-api.get('/api/v0/links', linkController.list);
-api.get('/api/v0/links/:linkId', linkController.details);
-api.post('/api/v0/links', linkController.create);
-api.get('/api/v0/links/:linkId/events', eventController.list);
+
+api.post(
+  '/api/v0/accounts',
+  accountController.create
+);
+
+api.get(
+  '/api/v0/links',
+  middleware.requireAuthentication,
+  linkController.list
+);
+
+api.get(
+  '/api/v0/links/:linkId',
+  middleware.requireAuthentication,
+  linkController.details
+);
+
+api.post(
+  '/api/v0/links',
+  linkController.create
+);
+
+api.get(
+  '/api/v0/links/:linkId/events',
+  middleware.requireAuthentication,
+  eventController.list
+);
 
 // Track routes
 track.get('*', trackController.handle);

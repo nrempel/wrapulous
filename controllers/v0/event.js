@@ -1,8 +1,10 @@
+var Event = require('../../models/event.js');
 var Link = require('../../models/link.js');
 
 exports.list = function (req, res) {
 
 	var id = req.params.linkId;
+	var apiKey = req.apiKey;
 
 	var limit = Number(req.query.limit) || 100;
 	var offset = Number(req.query.offset) || 0;
@@ -21,9 +23,24 @@ exports.list = function (req, res) {
 		sort[sortBy] = -1;
 	}
 
-	query = Link.findOne({tag: id}).sort(sort).skip(offset).limit(limit);
-	query.exec(function (err, link) {
-		if (err) { console.log(err); }
-		res.send(link.events);
+	// Get link
+	Link.findOne({tag: id, account: req.account.id}, function(err, link) {
+		if (err) {
+			console.log(err);
+			res.send(500);
+		} else {
+			// Get events
+			query = Event.findOne({link: link.id})
+				.sort(sort).skip(offset)
+				.limit(limit);
+			query.exec(function (err, events) {
+				if (err) {
+					console.log(err);
+					res.send(500);
+				} else {
+					res.send(events);
+				}
+			});
+		}
 	});
 };

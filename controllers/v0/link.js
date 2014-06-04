@@ -1,8 +1,10 @@
 var Promise = require('bluebird');
 var validator = require('validator');
 
-var helpers = require('../helpers.js');
+var Account = require('../../models/account.js');
+var helpers = require('../../helpers.js');
 var Link = require('../../models/link.js');
+
 
 // List links
 exports.list = function (req, res) {
@@ -23,24 +25,43 @@ exports.list = function (req, res) {
 		sort[sortBy] = -1;
 	}
 
-	query = Link.find().sort(sort).skip(offset).limit(limit);
+	query = Link.find({account: req.account.id})
+		.sort(sort).skip(offset).limit(limit);
 	query.exec(function (err, links) {
-		if (err) { console.log(err); }
-		res.send(links);
+		if (err) {
+			console.log(err);
+			res.send(500);
+		} else {
+			res.send(links);
+		}
 	});
 };
 
 // Get link by id
 exports.details = function (req, res) {
+
 	var id = req.params.linkId;
 
-	Link.findOne({tag: id}, function (err, link) {
-		if (err) { console.log(err); }
+	// Get links
+	Link.findOne({tag: id, account: req.account.id}, function (err, link) {
+		if (err) {
+			console.log(err);
+			res.send(500);
+		}
 		res.send(link);
 	});
 };
 
 exports.create = function (req, res) {
+
+	// If no API key was passed, create one and return it in a custom header
+	var account;
+	if (req.account) {
+		account = req.account;
+	} else {
+		account = new Account();
+		res.set('X-Api-Key', account.apiKey);
+	}
 
 	// Generate tag
 	var tag = helpers.generateBase62(6);
@@ -75,9 +96,10 @@ exports.create = function (req, res) {
 		} else {
 			// It's valid
 			var link = new Link({
-					destination: destination,
-					url: 'wrpls.com',
-					tag: tag
+				account: account.id,
+				destination: destination,
+				url: 'wrpls.com',
+				tag: tag
 			});
 
 			link.save(function (err, link) {

@@ -13,27 +13,31 @@ $(function () {
       data: JSON.stringify({destination: url})
     })
     .done(function(msg) {
-      console.log(msg);
+
+      var body = msg.body;
+      var apiKey = msg.apiKey;
+
       // Glow some stuff
       shortenerInput.addClass('glow-green');
       setTimeout(function(){
         shortenerInput.removeClass('glow-green');
       }, 100);
 
-      console.log(msg);
-
-      // TODO: Store which proto in db
-
       // Update dom to match response
       $("#short-link-placeholder").remove();
 
       $("#short-link")
-        .attr('href', 'http://' + msg.url + '/' + msg.tag)
+        .attr('href', 'http://' + body.url + '/' + body.tag)
         .attr('target', '_blank')
-        .text('http://' + msg.url + '/' + msg.tag);
+        .text('http://' + body.url + '/' + body.tag);
 
       $("#tracking-data")
-        .attr('href', 'http://api.wrapulous.com/api/v0/links/' + msg.tag + '/')
+        .attr(
+          'href',
+          'http://' +
+            apiKey + ':' + 'api.wrapulous.com/api/v0/links/' +
+            body.tag + '/'
+        )
         .attr('target', '_blank');
 
       $('#details').removeClass('details-hide');
@@ -41,7 +45,6 @@ $(function () {
 
     })
     .fail(function(msg) {
-      console.log(msg);
       // Glow some stuff
       $("#short-link-placeholder").text('Enter a valid link.');
       shortenerInput.addClass('glow-red');

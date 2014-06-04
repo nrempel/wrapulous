@@ -1,8 +1,15 @@
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  ObjectId = Schema.ObjectId;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+
+var helpers = require('../helpers.js');
 
 var eventSchema = new Schema({
+  link: String,
+  id: {
+    type: String,
+    default: 'ev_' + helpers.generateBase62(24)
+  },
   object: {
 		type: String,
 		default: 'event'
@@ -11,9 +18,9 @@ var eventSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-    type: String,
-    userAgent: String,
-    remoteAddress: String
+  type: String,
+  userAgent: String,
+  remoteAddress: String
 });
 
 // Remove meta data from toJSON
