@@ -186,6 +186,10 @@ small,
   filter: FlipH;
 /* IE 6/7/8 */
 }
+/** BRAND **/
+.dusty-brown {
+  color: #8b6969;
+}
 /** FINAL MEDIA QUERIES **/
 @media handheld, only screen and (max-width: 767px) {
   header .title {
