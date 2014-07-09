@@ -37,7 +37,7 @@ block doc-details
   h3 Example
   pre
     code
-      | curl 'api.wrapulous.com/api/v0/links?limit=5&offset=1&sortBy=destination&sortOrder=1' -u bHvtbvoaTm26U00gqgcmkyyc:
+      | curl 'api.wrapulous.com/v0/links?limit=5&offset=1&sortBy=destination&sortOrder=1' -u bHvtbvoaTm26U00gqgcmkyyc:
     code
       | [{"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"asd.ac","url":"wrpls.com","tag":"kOCofI","created":"2014-07-08T21:05:49.941Z","object":"link","id":"li_5vYVpA0c5UWUeUSuEySuUIkM"},{"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"google.ca","url":"wrpls.com","tag":"2FksrV","created":"2014-07-08T18:29:37.189Z","object":"link","id":"li_5vYVpA0c5UWUeUSuEySuUIkM"},{"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"google.ca","url":"wrpls.com","tag":"lbMO9q","created":"2014-07-08T20:00:44.648Z","object":"link","id":"li_5vYVpA0c5UWUeUSuEySuUIkM"},{"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"google.ca","url":"wrpls.com","tag":"SftSX4","created":"2014-07-08T21:51:55.581Z","object":"link","id":"li_5vYVpA0c5UWUeUSuEySuUIkM"},{"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"google.ca","url":"wrpls.com","tag":"aVuiKx","created":"2014-07-08T23:44:29.008Z","object":"link","id":"li_5vYVpA0c5UWUeUSuEySuUIkM"}]
 
@@ -47,7 +47,7 @@ block doc-details
   h3 Example
   pre
     code
-      | curl 'api.wrapulous.com/api/v0/links/kOCofI -u bHvtbvoaTm26U00gqgcmkyyc:
+      | curl 'api.wrapulous.com/v0/links/kOCofI -u bHvtbvoaTm26U00gqgcmkyyc:
     code
       | {"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"asd.ac","url":"wrpls.com","tag":"kOCofI","created":"2014-07-08T21:05:49.941Z","object":"link","id":"li_5vYVpA0c5UWUeUSuEySuUIkM"}
 
@@ -73,13 +73,13 @@ block doc-details
   h4 With API key:
   pre
     code
-      | curl -X POST api.wrapulous.com/api/v0/links -d '{"destination":"google.com"}' -H 'Content-Type: application/json' -u bHvtbvoaTm26U00gqgcmkyyc:
+      | curl -X POST api.wrapulous.com/v0/links -d '{"destination":"google.com"}' -H 'Content-Type: application/json' -u bHvtbvoaTm26U00gqgcmkyyc:
     code
       | {"account":"ac_Bx4NjnczkGAswCAsC6sOmYeG","destination":"google.com","url":"wrpls.com","tag":"Fq4eaD","created":"2014-07-09T21:38:10.922Z","object":"link","id":"li_vk9WrRC8CGuGmseMuqOAoEws"}
   h4 Without API key (note the X-Api-Key response header):
   pre
     code
-      | curl -X POST api.wrapulous.com/api/v0/links -d '{"destination":"google.com"}' -H 'Content-Type: application/json' -D -
+      | curl -X POST api.wrapulous.com/v0/links -d '{"destination":"google.com"}' -H 'Content-Type: application/json' -D -
     code.
       HTTP/1.1 201 Created
       Server: Cowboy
