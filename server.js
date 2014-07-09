@@ -99,29 +99,29 @@ var trackController = require('./controllers/track.js');
 // API routes
 
 api.post(
-  '/api/v0/accounts',
+  '/v0/accounts',
   accountController.create
 );
 
 api.get(
-  '/api/v0/links',
+  '/v0/links',
   middleware.requireAuthentication,
   linkController.list
 );
 
 api.get(
-  '/api/v0/links/:linkId',
+  '/v0/links/:linkId',
   middleware.requireAuthentication,
   linkController.details
 );
 
 api.post(
-  '/api/v0/links',
+  '/v0/links',
   linkController.create
 );
 
 api.get(
-  '/api/v0/links/:linkId/events',
+  '/v0/links/:linkId/events',
   middleware.requireAuthentication,
   eventController.list
 );

@@ -35,7 +35,7 @@ $(function () {
         .attr(
           'href',
           'http://' +
-            apiKey + ':@' + 'api.wrapulous.com/api/v0/links/' +
+            apiKey + ':@' + 'api.wrapulous.com/v0/links/' +
             body.tag + '/'
         )
         .attr('target', '_blank');
