@@ -7,6 +7,11 @@ body
   color: black
   font-size: 19px
   margin: inherit
+  ul
+    list-style-type: none
+  code
+    font-size: 17px
+
 body,html
   height: 100%
 
@@ -74,6 +79,21 @@ header a:hover
 header a:active
   opacity: 0.6
 
+/** TABLES **/
+table
+  border-collapse: collapse
+  border: 1px solid #ddd
+  border-radius: 10px
+  padding: 0.5em
+thead
+  background: #ddd
+
+tr, td
+  padding: 0.5em 1em
+  // border: 1px solid #ddd
+
+
+
 /** INPUTS **/
 input
   transition: box-shadow 1s ease-in
@@ -114,6 +134,23 @@ textarea
   vertical-align: middle
 .inline
   display: inline
+.pad
+  padding: 0.5em
+.pad-2
+  padding: 1.5em
+.pad-rl-2
+  padding-right: 1.5em
+  padding-left: 1.5em
+.pad-r
+  padding-right: 0.5em
+.pad-r-2
+  padding-right: 1.5em
+.no-pad
+  padding: 0
+.marg
+  margin: 0.5em
+.marg-r
+  margin-right: 0.5em
 .marg-tb
   margin-top: 0.5em
   margin-bottom: 0.5em
@@ -123,6 +160,8 @@ textarea
 .text-center
   text-align: center
 .pull-right
+  float: right
+.pull-left
   float: right
 .no-under
   text-decoration: none
@@ -143,6 +182,13 @@ textarea
   font-weight: 800
 small, .small
   font-size: 0.8em
+.bordered
+  border: solid 1px #ddd
+  border-radius: 10px
+.bordered-r
+  border-right: solid 1px #ddd
+.bordered-l
+  border-left: solid 1px #ddd
 .reverse
   display: inline-block
   -moz-transform: scaleX(-1); /* Gecko */
@@ -150,6 +196,7 @@ small, .small
   -webkit-transform: scaleX(-1); /* webkit */
   transform: scaleX(-1); /* standard */
   filter: FlipH; /* IE 6/7/8 */
+
 
 /** BRAND **/
 .dusty-brown

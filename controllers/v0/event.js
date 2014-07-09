@@ -30,7 +30,7 @@ exports.list = function (req, res) {
 			res.send(500);
 		} else {
 			// Get events
-			query = Event.findOne({link: link.id})
+			query = Event.find({link: link.id})
 				.sort(sort).skip(offset)
 				.limit(limit);
 			query.exec(function (err, events) {

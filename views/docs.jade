@@ -1,16 +1,28 @@
 extends base
 
-block content
-    div.grid.grid-pad
-        div.col-1-2
-            h2 Wrap a Link
-            code
-                | curl api.wrapulous.com/api/v0/links \<br>
-                | -X POST \<br>
-                | -d '{"destination":"google.ca"}' \<br>
-                | -H 'Content-Type:application/json'
+block js
+  script(src='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js')
+  script
+    | hljs.initHighlightingOnLoad();
 
-        div.col-1-2
-            h2 Track a Link
-            code
-                | curl api.wrapulous.com/api/v0/links/:id
+block css
+  link(rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css')
+
+block content
+  div.grid.grid-pad
+    div.col-3-12
+      div.bordered-r.marg-tb-2
+        h2.inline
+          i.fa.fa-lightbulb-o.pad-r
+          | API
+        ul.no-pad
+          li.marg-tb
+            a(href='/docs').no-under Overview
+          li.marg-tb
+            a(href='/docs/accounts').no-under Accounts
+          li.marg-tb
+            a(href='/docs/links').no-under Links
+          li.marg-tb
+            a(href='/docs/events').no-under Events
+    div.col-9-12
+      block doc-details

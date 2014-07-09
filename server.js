@@ -1,3 +1,4 @@
+var fs = require('fs');
 var mongoose = require('mongoose');
 var express = require('express');
 var compress = require('compression');
@@ -6,6 +7,7 @@ var morgan  = require('morgan');
 var bodyParser = require('body-parser');
 var errorHandler = require('errorhandler');
 var methodOverride = require('method-override');
+var marked = require('marked');
 var vhost = require('vhost');
 var middleware = require('./middleware.js');
 
@@ -41,6 +43,14 @@ api.use(middleware.defaultContentType); // Forces application/json
 api.use(middleware.attachApiKey);
 web.use(middleware.addDate); // Adds date to every template render
 
+// Synchronous highlighting with highlight.js
+marked.setOptions({
+  highlight: function (code) {
+    return require('highlight.js').highlightAuto(code).value;
+  }
+});
+
+
 if (process.env.ENVIRONMENT === 'production') {
   require('newrelic');
 } else {
@@ -49,15 +59,31 @@ if (process.env.ENVIRONMENT === 'production') {
 
 // Web routes
 web.get('/', function (req, res) {
-    res.render('home');
+  res.render('home');
 });
 
 web.get('/docs', function (req, res) {
-    res.render('docs');
+  res.render('docs/overview');
+});
+
+web.get('/docs/accounts', function (req, res) {
+  res.render('docs/accounts');
+});
+
+web.get('/docs/links', function (req, res) {
+  res.render('docs/links');
+});
+
+web.get('/docs/events', function (req, res) {
+  res.render('docs/events');
 });
 
 web.get('/about', function (req, res) {
-    res.render('about');
+  res.render('about');
+});
+
+web.get('*', function (req, res) {
+  res.render('404', { status: 404, url: req.url });
 });
 
 // AJAX routes

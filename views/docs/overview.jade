@@ -1,0 +1,40 @@
+extends ../docs
+
+block doc-details
+
+  h2 The Wrapulous API
+  p
+    :markdown
+      The Wrapulous API provides access to account creation, link shortening,
+      and click events.
+
+  h2 Getting Started
+  p
+    :markdown
+      To get started, create an API key.  There are two ways to do this: you can
+      use the [accounts](/docs/accounts) resource to create an account or you
+      can shorten a link with no API key in which case an API key will be generated for
+      you.  If you shorten a link with no API key via the [links](/docs/links)
+      resource, your new API key will be returned to you in the `X-Api-Key`
+      response header.
+
+  h2 API Endpoint
+  code
+    | api.wrapulous.com/:version
+
+  h3 Versions
+  strong v0&nbsp;
+  span (current)
+
+  h2 Authentication
+  p
+    :markdown
+      Authentication to the API occurs via HTTP Basic Auth. Provide your API key
+      as the basic auth username. You do not need to provide a password. All API
+      requests must be made over HTTPS. Calls made over plain HTTP will fail.
+
+  h2 Request/Response Formats
+  p
+    :markdown
+      The expected format for all requsts is of type `application/json`.  All
+      responses are also of type `application/json`.

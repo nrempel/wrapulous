@@ -3,10 +3,12 @@ html
   head
     title Wrapulous
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='/css/simplegrid.css')
+    link(rel='stylesheet' href='/css/lib/simplegrid.css')
     link(rel='stylesheet' href='/css/main.css')
     link(rel='stylesheet' href='/css/lib/ladda.min.css')
+    block css
     link(href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css')
+    link(href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet')
     script(src='/js/lib/jquery.js')
     script(src='/js/lib/spin.min.js')
     script(src='/js/lib/ladda.min.js')
@@ -21,14 +23,14 @@ html
             div.col-5-12
               h1.title
                 a(href='/')
-                  img(src='img/icon.png').vert-align
+                  img(src='/img/icon.png').vert-align
                   span.vert-align Wrapulous
 
             div.col-7-12
               div.nav
                 a(href='/').plain-link.no-under.vert-align.bubble Home
-                a(href='/#').plain-link.no-under.vert-align.bubble Docs
-                a(href='/#').plain-link.no-under.vert-align.bubble About
+                a(href='/docs').plain-link.no-under.vert-align.bubble Docs
+                a(href='#').plain-link.no-under.vert-align.bubble About
 
         div.content
           block content

@@ -1,0 +1,42 @@
+extends ../docs
+
+block doc-details
+  h2.dusty-brown GET /links/:tag/events
+  p List all events for a link.
+
+  h3 Parameters
+  table
+    thead
+      tr
+        th name
+        th required
+        th description
+    tbody
+      tr
+        td limit
+        td <code>false</code>
+        td Specifies the number of results to be returned. Must be between
+          | <code>0</code> and <code>100</code>.  Defaults to <code>100</code>.
+      tr
+        td offset
+        td <code>false</code>
+        td Specifies the index of the first result to be returned.  Defaults to
+          | <code>0</code>.
+      tr
+        td sortBy
+        td <code>false</code>
+        td Specifies which name should be used to sort the results set.
+          | Defaults to <code>created</code>.
+      tr
+        td sortOrder
+        td <code>false</code>
+        td Specifies the sort order of the results set.  Must be <code>-1</code>
+          | for descending or <code>1</code> for ascending.  Defaults to
+          | <code>-1</code>.
+
+  h3 Example
+  pre
+    code
+      | curl 'api.wrapulous.com/api/v0/links/kOCofI/events?limit=5&offset=1&sortBy=userAgent&sortOrder=1' -u bHvtbvoaTm26U00gqgcmkyyc:
+    code
+      | [{"link":"li_5vYVpA0c5UWUeUSuEySuUIkM","type":"click","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36","created":"2014-07-09T22:42:59.549Z","object":"event","id":"ev_vjFCuCeT3UaK8AAOQ62yq2ay"}]
