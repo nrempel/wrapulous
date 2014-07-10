@@ -43,7 +43,7 @@ exports.attachApiKey = function (req, res, next) {
 // Ensure api key is passed in http basic auth username
 exports.requireAuthentication = function (req, res, next) {
   if (!req.account) {
-    res.set('WWW-Authenticate', 'Basic realm="myRealm"');
+    res.set('WWW-Authenticate', 'Basic');
     res.send(
       401,
       'An API key is required to do that.');
