@@ -1,7 +1,7 @@
 Wrapulous
 =========
 
-This is source behind [Wrapulous](http://wrapulous.com).
+This is the source behind [Wrapulous](http://wrapulous.com).
 
 Installing
 ----------
@@ -24,7 +24,7 @@ Installing
 
 `cd wrapulous && npm install`
 
-5. Browse to http://localhost:5000/
+5. Browse to [http://localhost:5000/](http://localhost:5000/).
 
 Pull Requests
 -------------
