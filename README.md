@@ -8,23 +8,27 @@ Installing
 
 ### Mac OSX
 
-1. Clone this repository.
+- Clone this repository.
 
 `git clone git@github.com:nrempel/wrapulous.git`
 
-2. Install Node.js.
+- Install Node.js.
 
 `brew install nodejs`
 
-3. Install and run MongoDB.
+- Install and run MongoDB.
 
 `brew install mongodb && mongod --config /usr/local/etc/mongod.conf &`
     
-4. Install the dependencies.
+- Install the dependencies.
 
 `cd wrapulous && npm install`
 
-5. Browse to [http://localhost:5000/](http://localhost:5000/).
+- Run the server.
+
+`npm start`
+
+- Browse to [http://localhost:5000/](http://localhost:5000/).
 
 Pull Requests
 -------------
